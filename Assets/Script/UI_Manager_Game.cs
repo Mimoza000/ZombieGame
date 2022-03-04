@@ -16,7 +16,6 @@ public class UI_Manager_Game : MonoBehaviour
     [SerializeField] TextMeshProUGUI Reload;
     [SerializeField] TextMeshProUGUI enegyCoreCount;
     [SerializeField] TextMeshProUGUI timer;
-    [SerializeField] TextMeshProUGUI enegyCoreCounter;
     [SerializeField] GameObject pausePanel;
     [SerializeField] GameObject optionsPanel;
 
