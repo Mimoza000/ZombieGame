@@ -19,7 +19,10 @@ public class UI_Manager_Game : MonoBehaviour
     [SerializeField] GameObject pausePanel;
     [SerializeField] GameObject optionsPanel;
 
-    float time;
+    float time = 0;
+    int sec = 0;
+    int min = 0;
+    int hour = 0;
     private void Start()
     {
         playerHP_Bar.maxValue = GameManager.Instance.maxHP;
@@ -44,8 +47,14 @@ public class UI_Manager_Game : MonoBehaviour
         }
 
         // Timer
-        if (GameManager.Instance.startTimer) time += Time.deltaTime;
-        timer.text = $"Time : {time.ToString()}";
+        if (GameManager.Instance.startTimer) 
+        {
+            time += Time.deltaTime;
+            sec = (int)time % 60;
+            min = (int)time / 60 % 60;
+            hour = (int)time / 60 / 60;
+        }
+        timer.text = $"{hour.ToString()} : {min.ToString()} : {sec.ToString()}";
     }
 
     /// <summary>
