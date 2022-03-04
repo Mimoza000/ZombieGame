@@ -1,27 +1,3 @@
-using UnityEngine;
-using DG.Tweening;
-
-public class chestUI : MonoBehaviour
-{
-    [SerializeField] float duration = 0.4f;
-    [SerializeField] CanvasGroup canvas;
-    void Start()
-    {
-        canvas.alpha = 0;
-    }
-    void OnTriggerEnter(Collider collider)
-    {
-        if (collider.CompareTag("Player"))
-        {
-            canvas.DOFade(1,duration);
-        }
-    }
-
-    void OnTriggerExit(Collider collider)
-    {
-        if (collider.CompareTag("Player"))
-        {
-            canvas.DOFade(0,duration);
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:d787185a4eb92251eefbcb166c0cbf8a963533970d7847edae1b188e5b157dcb
+size 534

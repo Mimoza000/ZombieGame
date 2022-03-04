@@ -1,19 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class InventoryManager : MonoBehaviour
-{
-    public float input;
-    [SerializeField] int[] maxItemValue;
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:c65fafef762bcaca5c0c2b8e981fb58b3f21c0f9d17217c4be90da209a04a361
+size 312

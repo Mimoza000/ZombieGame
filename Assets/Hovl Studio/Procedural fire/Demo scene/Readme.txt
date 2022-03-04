@@ -1,3 +1,3 @@
-Add post process "Bloom" to make effects better like on the screenshots.
-You can find it in the Asset Store or Package manager.
-You can even create "Bloom shader" yourself :)
+version https://git-lfs.github.com/spec/v1
+oid sha256:533ccc990158f32726115863298326bbcacf732cac14d5cf752eca55dc4cc2a8
+size 174

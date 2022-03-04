@@ -1,23 +1,3 @@
-# ZombieGame
-
-This is my FIRST Game.
-
-## Assets
-
-Input System
-
-Map used for testing
-
-Unity Particle System Samples
-
-Free Weapon Asset Pack
-
-Probuilder for testing
-
-DOTWEEN
-
-SAColliderBuilder
-
-## Sounds (SE)
-
-https://umipla.com/soundeffect/category/%E6%94%BB%E6%92%83-2/%E9%8A%83
+version https://git-lfs.github.com/spec/v1
+oid sha256:148beeeaea7c502a1ebee274581f04e9e30fad0eb483a388210452ccf70169bd
+size 279

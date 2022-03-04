@@ -1,19 +1,3 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace MGAssets
-{
-    public class SpinWeapon : MonoBehaviour
-    {
-        public bool isActive = true;
-
-        public float factor = 1f;
-        public Vector3 angularSpeed = new Vector3( 0, 100, 0);
-
-        void Update()
-        {
-            if (isActive) transform.Rotate(factor * angularSpeed * Time.deltaTime);
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:190bab7b8e06e8f2010b3fb4c80cbfee610076f3ea566b1fde6d3fa2e61f06c9
+size 423

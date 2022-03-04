@@ -1,13 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class playerTeleporter : MonoBehaviour
-{
-    [SerializeField] GameObject teleportPoint;
-
-    void OnTriggerEnter(Collider collider)
-    {
-        if (collider.name == "Player") collider.transform.position = teleportPoint.transform.position;
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:8cb088918396e0b9d90f043aa14cec959d7705d44a4f830f0e27622e3937cab4
+size 336

@@ -1,28 +1,3 @@
-using UnityEngine;
-using DG.Tweening;
-
-public class weaponAim : MonoBehaviour
-{
-    [Header("References")]
-    [SerializeField] UI_Manager_Game crosshair;
-    public bool isAiming;
-    [Header("Value")]
-    public Transform aimPoint;
-    public float aimingTime = 0;
-
-    void Update()
-    {   
-        if (GameManager.Instance.aim == 1)
-        {
-            transform.DOLocalMove(aimPoint.localPosition, aimingTime)/*.SetEase(Ease.InOutCirc)*/;
-            crosshair.AimingCrosshair(true,aimingTime);
-            isAiming = true;
-        }
-        else
-        {
-            transform.DOLocalMove(Vector3.zero, aimingTime)/*.SetEase(Ease.InOutCirc)*/;
-            crosshair.AimingCrosshair(false,aimingTime);
-            isAiming = false;
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:c68f30c9edf7ad7ac9eebc4fadd983f925ce08025f3b6c5664f7e4cdf9049a7a
+size 759

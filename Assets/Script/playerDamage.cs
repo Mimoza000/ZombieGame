@@ -1,35 +1,3 @@
-using System;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class playerDamage : MonoBehaviour
-{
-    [SerializeField] float damageStartTime;
-    [SerializeField] float damageRate;
-    enemySystem enemy;
-    void Update()
-    {
-        if (enemy != null) 
-        {
-            if (enemy.animator.GetBool("dead")) CancelInvoke("PlayerHP");
-        }
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("AttackField"))
-        {
-            enemy = other.GetComponentInParent<enemySystem>();
-            InvokeRepeating("PlayerHP",damageStartTime,damageRate);
-        }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        CancelInvoke("PlayerHP");
-    }
-
-    void PlayerHP()
-    {
-        GameManager.Instance.playerHP -= enemy.status.attack;
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:a5a77d991b892e28960d0075dbe4b5fcd5595fd1b7ff9215af15e92ebdff9e6b
+size 809
