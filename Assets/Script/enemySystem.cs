@@ -35,6 +35,7 @@ public class enemySystem : MonoBehaviour
         agent.stoppingDistance = status.stopDistance;
         agent.angularSpeed = angularSpeed;
         agent.speed = localWalkSpeed;
+        agent.enabled = false;
 
         HP_Bar.maxValue = status.maxHP;
         enemyHP = status.maxHP;
@@ -43,6 +44,8 @@ public class enemySystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
+        if (GameManager.Instance.startTimer) agent.enabled = true;
+        
         // Canvas
         HP_Bar.value = enemyHP;
         HP_Bar.transform.forward = Camera.main.transform.forward;
