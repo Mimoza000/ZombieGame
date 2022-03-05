@@ -39,6 +39,7 @@ ExportedObj/
 *.tmp
 *.user
 *.userprefs
+*.lighting
 *.pidb
 *.booproj
 *.svd
@@ -51,6 +52,7 @@ ExportedObj/
 *.pidb.meta
 *.pdb.meta
 *.mdb.meta
+*.lighting.meta
 
 # Unity3D generated file on crash reports
 sysinfo.txt

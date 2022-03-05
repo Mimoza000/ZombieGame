@@ -6,8 +6,8 @@ public class playerTeleporter : MonoBehaviour
 {
     [SerializeField] GameObject teleportPoint;
 
-    void OnTriggerEnter(Collider collider)
+    void OnTriggerStay(Collider collider)
     {
-        if (collider.name == "Player") collider.transform.position = teleportPoint.transform.position;
+        if (collider.CompareTag("Player")) collider.transform.position = teleportPoint.transform.position;
     }
 }

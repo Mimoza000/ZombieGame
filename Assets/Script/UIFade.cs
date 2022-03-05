@@ -1,7 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
 
-public class chestUI : MonoBehaviour
+public class UIFade : MonoBehaviour
 {
     [SerializeField] float duration = 0.4f;
     [SerializeField] CanvasGroup canvas;
