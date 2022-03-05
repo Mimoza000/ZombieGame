@@ -18,12 +18,11 @@ public class UI_Manager_Game : MonoBehaviour
     [SerializeField] TextMeshProUGUI timer;
     [SerializeField] GameObject pausePanel;
     [SerializeField] GameObject optionsPanel;
-
     float time = 0;
     int sec = 0;
     int min = 0;
     int hour = 0;
-    float fps;
+
     private void Start()
     {
         playerHP_Bar.maxValue = GameManager.Instance.maxHP;
@@ -55,7 +54,7 @@ public class UI_Manager_Game : MonoBehaviour
             min = (int)time / 60 % 60;
             hour = (int)time / 60 / 60;
         }
-        timer.text = $"{hour.ToString()} : {min.ToString()} : {sec.ToString()}";
+        timer.text = $"{hour.ToString()} : {min.ToString()} : {sec.ToString("F2")}";
     }
 
     /// <summary>
