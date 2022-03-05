@@ -23,6 +23,7 @@ public class UI_Manager_Game : MonoBehaviour
     int sec = 0;
     int min = 0;
     int hour = 0;
+    float fps;
     private void Start()
     {
         playerHP_Bar.maxValue = GameManager.Instance.maxHP;

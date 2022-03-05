@@ -4,9 +4,7 @@ using DG.Tweening;
 public class itemDrop : MonoBehaviour
 {
     [SerializeField] float duration;
-    GameObject player;
-    Vector3 position;
-    bool canDestroy = false;
+    Transform player;
     void Start()
     {
         transform.DOMoveY(0.6f,duration)
@@ -16,10 +14,10 @@ public class itemDrop : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.CompareTag("Player") && !canDestroy)
+        if (collider.CompareTag("Player"))
         {
-            player = collider.GetComponent<GameObject>();
-            transform.DOMove(player.transform.position,duration)
+            player = collider.transform;
+            transform.DOMove(player.position,duration)
             .SetEase(Ease.InOutExpo)
             .OnComplete(() => 
             {
