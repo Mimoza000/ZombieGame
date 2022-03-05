@@ -85,7 +85,7 @@ public class weaponFire : MonoBehaviour
     void Shoot()
     {
         ammo--;
-        muzzleFlash.Emit(1);
+        muzzleFlash.Play();
         isShooting = true;
 
         // TrailRenderer
