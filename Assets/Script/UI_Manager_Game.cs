@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
 using UnityEngine.SceneManagement;
+using Cysharp.Threading.Tasks;
 
 public class UI_Manager_Game : MonoBehaviour
 {
@@ -10,23 +11,62 @@ public class UI_Manager_Game : MonoBehaviour
     [SerializeField] Image crosshair;
     [SerializeField] Image hitCrosshair;
     [SerializeField] Slider playerHP_Bar;
-    [SerializeField] weaponFire fire;
     [SerializeField] TextMeshProUGUI playerHP;
     [SerializeField] TextMeshProUGUI Ammo;
     [SerializeField] TextMeshProUGUI Reload;
     [SerializeField] TextMeshProUGUI enegyCoreCount;
     [SerializeField] TextMeshProUGUI timer;
-    [SerializeField] GameObject pausePanel;
-    [SerializeField] GameObject optionsPanel;
+    [Header("Panels")]
+    [SerializeField] float duration = 1;
+    [SerializeField] CanvasGroup pausePanel;
+    [SerializeField] CanvasGroup optionPanel;
+    [SerializeField] CanvasGroup resultPanel;
+    [SerializeField] CanvasGroup gameoverPanel;
+    [Header("Count Down Scene")]
+    [SerializeField] CanvasGroup gameStart;
+    [SerializeField] TextMeshProUGUI countDown;
+
+    [Header("Disable when Player Input")]
+    [SerializeField] playerLook look;
+    [SerializeField] playerMove move;
+    [SerializeField] weaponAim aim;
+    [SerializeField] weaponFire fire;
     float time = 0;
     float sec = 0;
     int min = 0;
     int hour = 0;
+    bool startTimer;
+    
+    async void Awake()
+    {
+        look.enabled = false;
+        move.enabled = false;
+        aim.enabled = false;
+        fire.enabled = false;
+        gameStart.alpha = 1;
+        await UniTask.Delay(1000);
+        countDown.text = "3";
+        await UniTask.Delay(2000);
+        countDown.text = "2";
+        await UniTask.Delay(3000);
+        countDown.text = "1";
+        await UniTask.Delay(4000);
+        countDown.text = "Game Start!";
+        gameStart.DOFade(0,1);
+        look.enabled = true;
+        move.enabled = true;
+        aim.enabled = true;
+        fire.enabled = true;
+        startTimer = true;
+    }
 
     private void Start()
     {
         playerHP_Bar.maxValue = GameManager.Instance.maxHP;
-        time = 0;
+        pausePanel.alpha = 0;
+        optionPanel.alpha = 0;
+        resultPanel.alpha = 0;
+        gameoverPanel.alpha = 0;
     }
 
     private void Update()
@@ -40,14 +80,14 @@ public class UI_Manager_Game : MonoBehaviour
         // Open Menu Panel
         if (GameManager.Instance.menu == 1) 
         {
-            playerInput.input.Player.Disable();
+            
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-            pausePanel.SetActive(true);
+            pausePanel.DOFade(1,duration);
         }
 
         // Timer
-        if (GameManager.Instance.startTimer) 
+        if (startTimer) 
         {
             time += Time.deltaTime;
             sec = time % 60;
@@ -83,7 +123,7 @@ public class UI_Manager_Game : MonoBehaviour
         }
     }
 
-        public void LoadStart()
+    public void LoadLobby()
     {
         SceneManager.LoadScene(0);
     }
@@ -94,8 +134,7 @@ public class UI_Manager_Game : MonoBehaviour
         playerInput.input.Player.Enable();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        pausePanel.SetActive(false);
-        optionsPanel.SetActive(false);
+        pausePanel.DOFade(0,duration);
     }
 
     public void GoToOptions()
@@ -104,7 +143,7 @@ public class UI_Manager_Game : MonoBehaviour
         playerInput.input.Player.Disable();
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        pausePanel.SetActive(false);
-        optionsPanel.SetActive(true);
+        pausePanel.DOFade(0,duration);
+        optionPanel.DOFade(1,duration);
     }
 }

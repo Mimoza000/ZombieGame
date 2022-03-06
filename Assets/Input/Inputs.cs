@@ -82,15 +82,6 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""LookDebug"",
-                    ""type"": ""Value"",
-                    ""id"": ""8da2c759-eb14-410b-8224-b9cb9ffd78c2"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
                     ""name"": ""Reload"",
                     ""type"": ""Button"",
                     ""id"": ""2634ece1-5e94-48e4-bb5a-a2d6a20241c4"",
@@ -230,61 +221,6 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""ARROW"",
-                    ""id"": ""3e568986-3b3a-40bf-a276-1e9980eeed16"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": ""InvertVector2(invertX=false),ScaleVector2(x=100,y=100)"",
-                    ""groups"": """",
-                    ""action"": ""LookDebug"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""2273b98b-d4a5-465c-b909-10d9c25fb1e6"",
-                    ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KeyboardMouse"",
-                    ""action"": ""LookDebug"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""d2db2e44-faac-4c2d-9083-06149f054522"",
-                    ""path"": ""<Keyboard>/downArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KeyboardMouse"",
-                    ""action"": ""LookDebug"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""1b21d2dc-1d94-4af7-81b5-310dcc131eff"",
-                    ""path"": ""<Keyboard>/leftArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KeyboardMouse"",
-                    ""action"": ""LookDebug"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""29895000-01fe-41d8-af7e-eaf8c31309a5"",
-                    ""path"": ""<Keyboard>/rightArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KeyboardMouse"",
-                    ""action"": ""LookDebug"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": """",
                     ""id"": ""6435491a-a106-4528-84b0-d77aef75db60"",
                     ""path"": ""<Keyboard>/r"",
@@ -375,7 +311,6 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
-        m_Player_LookDebug = m_Player.FindAction("LookDebug", throwIfNotFound: true);
         m_Player_Reload = m_Player.FindAction("Reload", throwIfNotFound: true);
         m_Player_Execute = m_Player.FindAction("Execute", throwIfNotFound: true);
         m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
@@ -447,7 +382,6 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_Aim;
     private readonly InputAction m_Player_Fire;
-    private readonly InputAction m_Player_LookDebug;
     private readonly InputAction m_Player_Reload;
     private readonly InputAction m_Player_Execute;
     private readonly InputAction m_Player_Inventory;
@@ -461,7 +395,6 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
-        public InputAction @LookDebug => m_Wrapper.m_Player_LookDebug;
         public InputAction @Reload => m_Wrapper.m_Player_Reload;
         public InputAction @Execute => m_Wrapper.m_Player_Execute;
         public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
@@ -492,9 +425,6 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                 @Fire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
                 @Fire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
                 @Fire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
-                @LookDebug.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLookDebug;
-                @LookDebug.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLookDebug;
-                @LookDebug.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLookDebug;
                 @Reload.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
                 @Reload.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
                 @Reload.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
@@ -526,9 +456,6 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                 @Fire.started += instance.OnFire;
                 @Fire.performed += instance.OnFire;
                 @Fire.canceled += instance.OnFire;
-                @LookDebug.started += instance.OnLookDebug;
-                @LookDebug.performed += instance.OnLookDebug;
-                @LookDebug.canceled += instance.OnLookDebug;
                 @Reload.started += instance.OnReload;
                 @Reload.performed += instance.OnReload;
                 @Reload.canceled += instance.OnReload;
@@ -592,7 +519,6 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
         void OnSprint(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
-        void OnLookDebug(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
         void OnExecute(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);

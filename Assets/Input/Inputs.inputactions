@@ -60,15 +60,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "LookDebug",
-                    "type": "Value",
-                    "id": "8da2c759-eb14-410b-8224-b9cb9ffd78c2",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "Reload",
                     "type": "Button",
                     "id": "2634ece1-5e94-48e4-bb5a-a2d6a20241c4",
@@ -206,61 +197,6 @@
                     "action": "Fire",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "ARROW",
-                    "id": "3e568986-3b3a-40bf-a276-1e9980eeed16",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "InvertVector2(invertX=false),ScaleVector2(x=100,y=100)",
-                    "groups": "",
-                    "action": "LookDebug",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "2273b98b-d4a5-465c-b909-10d9c25fb1e6",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyboardMouse",
-                    "action": "LookDebug",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "d2db2e44-faac-4c2d-9083-06149f054522",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyboardMouse",
-                    "action": "LookDebug",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "1b21d2dc-1d94-4af7-81b5-310dcc131eff",
-                    "path": "<Keyboard>/leftArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyboardMouse",
-                    "action": "LookDebug",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "29895000-01fe-41d8-af7e-eaf8c31309a5",
-                    "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyboardMouse",
-                    "action": "LookDebug",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
