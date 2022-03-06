@@ -1,14 +1,14 @@
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
-
+using Cysharp.Threading.Tasks;
 public class CountDownManager : MonoBehaviour
 {
     [Header("CountDown Screen")]
     [SerializeField] CanvasGroup gameStart;
     [SerializeField] TextMeshProUGUI countDown;
     [SerializeField] GameObject[] disabledGameObjectList;
-    [SerializeField] MonoBehaviour[] disabledScriptList;
+    [SerializeField] MonoBehaviour playerInput;
     float count = 4;
     void Start()
     {
