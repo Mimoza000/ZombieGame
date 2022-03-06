@@ -35,14 +35,19 @@ public class UI_Manager_Game : MonoBehaviour
     float sec = 0;
     int min = 0;
     int hour = 0;
-    bool startTimer;
     
     async void Awake()
     {
-        look.enabled = false;
-        move.enabled = false;
-        aim.enabled = false;
-        fire.enabled = false;
+        // look.enabled = false;
+        // move.enabled = false;
+        // aim.enabled = false;
+        // fire.enabled = false;
+        GameManager.Instance.vertical = 0;
+        GameManager.Instance.horizotal = 0;
+        GameManager.Instance.sprint = 0;
+        GameManager.Instance.jump = 0;
+        GameManager.Instance.mouseX = 0;
+        GameManager.Instance.mouseY = 0;
         gameStart.alpha = 1;
         await UniTask.Delay(1000);
         countDown.text = "3";
@@ -53,11 +58,12 @@ public class UI_Manager_Game : MonoBehaviour
         await UniTask.Delay(4000);
         countDown.text = "Game Start!";
         gameStart.DOFade(0,1);
-        look.enabled = true;
-        move.enabled = true;
-        aim.enabled = true;
-        fire.enabled = true;
-        startTimer = true;
+        // look.enabled = true;
+        // move.enabled = true;
+        // aim.enabled = true;
+        // fire.enabled = true;
+        
+        GameManager.Instance.startTimer = true;
     }
 
     private void Start()
@@ -87,7 +93,7 @@ public class UI_Manager_Game : MonoBehaviour
         }
 
         // Timer
-        if (startTimer) 
+        if (GameManager.Instance.startTimer) 
         {
             time += Time.deltaTime;
             sec = time % 60;
