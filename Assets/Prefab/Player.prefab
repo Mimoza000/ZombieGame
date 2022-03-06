@@ -40,11 +40,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2205741956616589621}
   - component: {fileID: 2205741956616589620}
-  - component: {fileID: 2205741956616589619}
   - component: {fileID: 2205741956616589618}
   - component: {fileID: 2205741956616589622}
   - component: {fileID: 5364405933376666088}
-  - component: {fileID: 1575671396010229580}
+  - component: {fileID: 3479835100850739336}
+  - component: {fileID: 5004277188194464240}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -86,18 +86,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2205741956616589619
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2205741956616589617}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feb252d73b28fbc469af8755ca846750, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2205741956616589618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,10 +102,6 @@ MonoBehaviour:
   aimSensitivity: 0.15
   maxRot: 80
   minRot: -80
-  mainCamera: {fileID: 2205741956639375012}
-  cursorVisible: 0
-  cursorLockState: 1
-  aim: {fileID: 7644860998390076301}
 --- !u!114 &2205741956616589622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,7 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49e1e7f83fe703742b2341705b266c01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: -19.62
+  gravity: -9.81
   groundCheck: {fileID: 2205741955525689619}
   groundDistance: 0.5
   jumpHeight: 0
@@ -154,20 +138,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageStartTime: 1
   damageRate: 1
---- !u!136 &1575671396010229580
-CapsuleCollider:
+--- !u!114 &3479835100850739336
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2205741956616589617}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 0125a7424cba68d43bc58efa478dc23b, type: 3}
+  m_NotificationBehavior: 3
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: KeyboardMouse
+  m_DefaultActionMap: Game
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &5004277188194464240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2205741956616589617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31acb12c4b318af468c7d3bb81e8ae70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gun: {fileID: 0}
+  aim: {fileID: 0}
 --- !u!1 &2205741956639375009
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,14 +545,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7644860997345813109, guid: f3e8f18e565e58c438d451f4153ba801, type: 3}
   m_PrefabInstance: {fileID: 565641547}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7644860998390076301 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7644860997881057990, guid: f3e8f18e565e58c438d451f4153ba801, type: 3}
-  m_PrefabInstance: {fileID: 565641547}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88b4153851c10bf4cadc9cb855f0feb6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

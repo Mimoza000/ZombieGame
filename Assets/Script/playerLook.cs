@@ -3,38 +3,30 @@ using UnityEngine;
 public class playerLook : MonoBehaviour
 {
     [Header("Value")]
-    [SerializeField] float sensitivity = 3;
-    // extension value
-    [SerializeField] float aimSensitivity = 15;
+    [SerializeField] float sensitivity = 0.3f;
+    [SerializeField] float aimSensitivity = 0.1f;
     [SerializeField] float maxRot = 80;
     [SerializeField] float minRot = -80;
-    [SerializeField] Transform mainCamera;
-    [SerializeField] bool cursorVisible = true;
-    [SerializeField] bool cursorLockState = true;
-    float xRotation = 0f;
-    public weaponAim aim;
-    private void Start()
+    float xRotation;
+    void Start()
     {
-        Cursor.visible = cursorVisible;
-        if (cursorLockState)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.None;
-        }
+        xRotation = Camera.main.transform.localRotation.x;
     }
-    void Update()
+    public void Look(Vector2 direction)
     {
-        GameManager.Instance.mouseX *= aim.isAiming ? aimSensitivity / 100 * Time.deltaTime : sensitivity / 100 * Time.deltaTime;
-        GameManager.Instance.mouseY *= aim.isAiming ? aimSensitivity / 100 * Time.deltaTime : sensitivity / 100 * Time.deltaTime;
+        direction.x *= sensitivity * Time.deltaTime;
+        direction.y *= sensitivity * Time.deltaTime;
 
-        xRotation += GameManager.Instance.mouseY;
-
+        xRotation += direction.y;
         xRotation = Mathf.Clamp(xRotation, minRot, maxRot);
 
-        mainCamera.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
-        transform.Rotate(Vector3.up * GameManager.Instance.mouseX);
+        Camera.main.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
+        transform.Rotate(Vector3.up * direction.x);
+    }
+
+    public void Aim(bool Trigger)
+    {
+        if (Trigger) return;
+        else sensitivity = aimSensitivity;
     }
 }

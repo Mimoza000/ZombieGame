@@ -38,31 +38,24 @@ public class UI_Manager_Game : MonoBehaviour
     
     async void Awake()
     {
-        // look.enabled = false;
-        // move.enabled = false;
-        // aim.enabled = false;
-        // fire.enabled = false;
-        GameManager.Instance.vertical = 0;
-        GameManager.Instance.horizotal = 0;
-        GameManager.Instance.sprint = 0;
-        GameManager.Instance.jump = 0;
-        GameManager.Instance.mouseX = 0;
-        GameManager.Instance.mouseY = 0;
+        look.enabled = false;
+        move.enabled = false;
+        aim.enabled = false;
+        fire.enabled = false;
         gameStart.alpha = 1;
-        await UniTask.Delay(1000);
+        //await UniTask.Delay(1000);
         countDown.text = "3";
-        await UniTask.Delay(2000);
+        //await UniTask.Delay(2000);
         countDown.text = "2";
-        await UniTask.Delay(3000);
+        //await UniTask.Delay(3000);
         countDown.text = "1";
-        await UniTask.Delay(4000);
+        //await UniTask.Delay(4000);
         countDown.text = "Game Start!";
         gameStart.DOFade(0,1);
-        // look.enabled = true;
-        // move.enabled = true;
-        // aim.enabled = true;
-        // fire.enabled = true;
-        
+        look.enabled = true;
+        move.enabled = true;
+        aim.enabled = true;
+        fire.enabled = true;
         GameManager.Instance.startTimer = true;
     }
 
@@ -86,7 +79,10 @@ public class UI_Manager_Game : MonoBehaviour
         // Open Menu Panel
         if (GameManager.Instance.menu == 1) 
         {
-            
+            look.enabled = false;
+            move.enabled = false;
+            aim.enabled = false;
+            fire.enabled = false;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             pausePanel.DOFade(1,duration);
@@ -134,10 +130,15 @@ public class UI_Manager_Game : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void Pause()
+    {
+
+    }
+
     public void BackToGame()
     {
         GameManager.Instance.menu = 0;
-        playerInput.input.Player.Enable();
+        // playerInput.input.Player.Enable();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         pausePanel.DOFade(0,duration);
@@ -146,7 +147,7 @@ public class UI_Manager_Game : MonoBehaviour
     public void GoToOptions()
     {
         GameManager.Instance.menu = 0;
-        playerInput.input.Player.Disable();
+        // playerInput.input.Player.Disable();
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         pausePanel.DOFade(0,duration);

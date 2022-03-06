@@ -3,60 +3,52 @@ using UnityEngine;
 public class playerMove : MonoBehaviour
 {
     [Header("Value")]
-    public float gravity = -9.81f;
-    public Transform groundCheck;
-    public float groundDistance = 0.5f;
-    public float jumpHeight = 2;
-    public LayerMask groundMask;
+    [SerializeField] float gravity = -9.81f;
+    [SerializeField] Transform groundCheck;
+    [SerializeField] float groundDistance = 0.5f;
+    [SerializeField] float jumpHeight = 15;
+    [SerializeField] LayerMask groundMask;
 
-    public float playerSpeed = 0;
-    public float sprintSpeed = 5;
-    public float walkSpeed = 3;
-
-    Vector3 velocity;
+    [SerializeField] float playerSpeed;
+    [SerializeField] float sprintSpeed = 5;
+    [SerializeField] float walkSpeed = 3;
+    Vector3 velocity = Vector3.zero;
     bool isGrounded;
     CharacterController controller;
     // Start is called before the first frame update
     void Start()
     {
-        controller = GetComponent<CharacterController>();
+        TryGetComponent<CharacterController>(out controller);
+        playerSpeed = walkSpeed;
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="direction"></param>
+    public void Move(Vector3 direction)
     {
-        MoveJump();
-        Sprint();
+        direction = transform.right * direction.x + transform.forward * direction.z;
+        controller.Move(direction * playerSpeed * Time.deltaTime);
     }
 
-    void MoveJump()
+    public void Jump()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        Debug.Log(isGrounded);
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2;
+            return;
         }
-        if (GameManager.Instance.jump > 0 && isGrounded)
-        {
-            velocity.y = Mathf.Sqrt(GameManager.Instance.jump * -2f * gravity);
-        }
-
-        Vector3 move = transform.forward * GameManager.Instance.vertical + transform.right * GameManager.Instance.horizotal;
-        controller.Move(move * playerSpeed * Time.deltaTime);
-
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
+        else if (isGrounded) velocity.y = jumpHeight;
+        velocity.y += gravity * Time.deltaTime * Time.deltaTime;
+        controller.Move(velocity);
     }
 
-    void Sprint()
+    public void Sprint(bool Trigger)
     {
-        if (GameManager.Instance.sprint == 1 && GameManager.Instance.vertical > 0)
-        {
-            playerSpeed = sprintSpeed;
-        }
-        else
-        {
-            playerSpeed = walkSpeed;
-        }
+        if (Trigger) playerSpeed = sprintSpeed;
+        else playerSpeed = walkSpeed;
     }
 }

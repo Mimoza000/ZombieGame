@@ -2,7 +2,7 @@
     "name": "Inputs",
     "maps": [
         {
-            "name": "Player",
+            "name": "Game",
             "id": "d3dc4e4e-aa79-4d36-b89b-f6d5cb54d751",
             "actions": [
                 {
@@ -19,7 +19,7 @@
                     "type": "Value",
                     "id": "83f6ea39-d72b-48c2-85fc-ebbf4005f224",
                     "expectedControlType": "Vector2",
-                    "processors": "",
+                    "processors": "InvertVector2(invertX=false),NormalizeVector2",
                     "interactions": "",
                     "initialStateCheck": true
                 },
@@ -39,7 +39,7 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Aim",
@@ -81,6 +81,15 @@
                     "name": "Inventory",
                     "type": "Button",
                     "id": "6868f88e-d2f9-4307-a2e7-030c4dbe4f9b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "f15b6f8e-9076-4bbf-a161-24d6ab1a5eac",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -148,7 +157,7 @@
                     "id": "24b2a08d-7ff1-4acf-ac2f-d9a8a41ed123",
                     "path": "<Mouse>/delta",
                     "interactions": "",
-                    "processors": "InvertVector2(invertX=false)",
+                    "processors": "",
                     "groups": "KeyboardMouse",
                     "action": "Look",
                     "isComposite": false,
@@ -230,17 +239,28 @@
                     "action": "Inventory",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9a402ee9-cada-4a25-8bc6-eff994b88a3c",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
         {
-            "name": "Menu",
-            "id": "b4a6f005-0a25-460d-ba1f-ec2ce0d5bbbb",
+            "name": "UI",
+            "id": "6d824a65-358e-42d6-9034-a0a3073c8db4",
             "actions": [
                 {
-                    "name": "Pause",
+                    "name": "BackToGame",
                     "type": "Button",
-                    "id": "895067a0-d36b-4ecb-a031-d772b547daae",
+                    "id": "ae10b4c1-4832-4ece-ab38-25f4f50c9363",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -250,12 +270,12 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "3a72cd72-726f-4b57-972a-b5e222bfad02",
-                    "path": "<Keyboard>/g",
+                    "id": "6c62bb63-5d67-4c62-8a80-13fb543a4100",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
-                    "groups": "KeyboardMouse",
-                    "action": "Pause",
+                    "groups": "",
+                    "action": "BackToGame",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

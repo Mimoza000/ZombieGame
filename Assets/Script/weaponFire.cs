@@ -1,5 +1,5 @@
 using UnityEngine;
-using TMPro;
+using Cysharp.Threading.Tasks;
 
 public class weaponFire : MonoBehaviour
 {
@@ -22,7 +22,7 @@ public class weaponFire : MonoBehaviour
     [Tooltip("sec")]
     [SerializeField] float reloadTime = 1;
     [Tooltip("100%")]
-    [SerializeField] float fireRate = 12;
+    [SerializeField] int fireRate = 120;
     [SerializeField] float fireRecoil = 0;
     [SerializeField] bool enableSemiAuto = false;
     [SerializeField] int damage = 1;
@@ -40,21 +40,18 @@ public class weaponFire : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public async void Fire()
     {    
        // Shooting System
-        if (GameManager.Instance.fire == 1 && isShooting)
+        if (isShooting)
         {
             isShooting = false;
             if (ammo <= 0 && !nowReloading) ReloadStart();
-            if (nowReloading)
+            if (nowReloading) return;
+            if (enableSemiAuto) 
             {
-                GameManager.Instance.fire = 0;
-                
-                return;
+                await UniTask.Delay(fireRate);
             }
-            if (enableSemiAuto) GameManager.Instance.fire = 0;
-            Invoke("Shoot", fireRate / 100);
             return;
         }
         if (GameManager.Instance.fire == 0) crosshair.DamagedCrosshair(false, damagedCrosshairTime);
@@ -66,6 +63,7 @@ public class weaponFire : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // Debug用目線表示
         ray_0.origin = Camera.main.transform.position;
         ray_0.direction = Camera.main.transform.forward;
         if (Physics.Raycast(ray_0, out hitInfo_0, Mathf.Infinity, -1, QueryTriggerInteraction.Ignore))
@@ -77,21 +75,15 @@ public class weaponFire : MonoBehaviour
             ray_1.direction = hitInfo_0.point - ray_1.origin;
 
             Physics.Raycast(ray_1, out hitInfo_1, Mathf.Infinity, -1, QueryTriggerInteraction.Ignore);
-            // Debug.Log(hitInfo_1.collider.name);
             Debug.DrawRay(ray_1.origin, ray_1.direction * 100, Color.blue, 1);
         }
     }
 
-    void Shoot()
+    void Shooting()
     {
         ammo--;
         muzzleFlash.Play();
         isShooting = true;
-
-        // TrailRenderer
-        // var tracer = Instantiate(tracerEffect, muzzle.transform.position, Quaternion.identity);
-        // tracer.AddPosition(ray.origin);
-        // tracer.transform.position = hit.point;
 
         if (hitInfo_1.collider.CompareTag("Enemy")) enemy = hitInfo_1.collider.GetComponentInParent<enemySystem>();
         if (enemy != null && !enemy.animator.GetBool("dead"))
@@ -102,11 +94,11 @@ public class weaponFire : MonoBehaviour
 
     }
 
-    void ReloadStart()
+    public void ReloadStart()
     {
         isShooting = false;
         nowReloading = true;
-        Invoke("ReloadFinish", reloadTime);
+        // await UniTask.Delay(reloadingTime);
     }
 
     void ReloadFinish()

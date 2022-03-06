@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         playerHP = maxHP;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }
  
