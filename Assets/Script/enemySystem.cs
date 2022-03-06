@@ -1,6 +1,7 @@
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.AI;
+using Cysharp.Threading.Tasks;
 
 public class enemySystem : MonoBehaviour
 {
@@ -24,7 +25,7 @@ public class enemySystem : MonoBehaviour
     Transform player;
     void Start()
     {
-        player = GameObject.Find("Player").GetComponent<Transform>();
+        GameObject.Find("Player").TryGetComponent<Transform>(out player);
         activeLimiter = true;
         animator.SetBool("dead",false);
         localRunSpeed = status.runSpeed + Random.Range(0,addtiveMaxRandom);
@@ -35,8 +36,8 @@ public class enemySystem : MonoBehaviour
         agent.stoppingDistance = status.stopDistance;
         agent.angularSpeed = angularSpeed;
         agent.speed = localWalkSpeed;
-        agent.enabled = false;
 
+        // Set UI of Enemy
         HP_Bar.maxValue = status.maxHP;
         enemyHP = status.maxHP;
     }
@@ -44,8 +45,7 @@ public class enemySystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        if (GameManager.Instance.startTimer) agent.enabled = true;
-        
+        if (!GameManager.Instance.startTimer) return;
         // Canvas
         HP_Bar.value = enemyHP;
         HP_Bar.transform.forward = Camera.main.transform.forward;

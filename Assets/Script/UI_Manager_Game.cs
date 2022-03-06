@@ -19,7 +19,7 @@ public class UI_Manager_Game : MonoBehaviour
     [SerializeField] GameObject pausePanel;
     [SerializeField] GameObject optionsPanel;
     float time = 0;
-    int sec = 0;
+    float sec = 0;
     int min = 0;
     int hour = 0;
 
@@ -50,11 +50,11 @@ public class UI_Manager_Game : MonoBehaviour
         if (GameManager.Instance.startTimer) 
         {
             time += Time.deltaTime;
-            sec = (int)time % 60;
+            sec = time % 60;
             min = (int)time / 60 % 60;
             hour = (int)time / 60 / 60;
         }
-        timer.text = $"{hour.ToString()} : {min.ToString()} : {sec.ToString("F2")}";
+        timer.text = $"{hour.ToString("D2")} : {min.ToString("D2")} : {sec.ToString("F2")}";
     }
 
     /// <summary>

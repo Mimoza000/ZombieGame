@@ -3,27 +3,31 @@ using DG.Tweening;
 
 public class itemDrop : MonoBehaviour
 {
-    [SerializeField] float duration;
+    [SerializeField] float duration = 1;
+    Vector3 velocity;
     Transform player;
-    void Start()
+    Vector3 position;
+
+    void Update()
     {
-        transform.DOMoveY(0.6f,duration)
-        .SetLoops(-1,LoopType.Yoyo)
-        .SetEase(Ease.OutQuad);
+        if (player != null)
+        {
+            var acceleration = Vector3.zero;
+
+            var diff = player.position - position;
+            acceleration += (diff - velocity * duration) * 2 / (duration * duration);
+
+            duration -= Time.deltaTime;
+            if (duration < 0) return;
+
+            velocity += acceleration * Time.deltaTime;
+            position += velocity * Time.deltaTime;
+            transform.position = position;
+        }
     }
 
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.CompareTag("Player"))
-        {
-            player = collider.transform;
-            transform.DOMove(player.position,duration)
-            .SetEase(Ease.InOutExpo)
-            .OnComplete(() => 
-            {
-                GameManager.Instance.dropItemSize++;
-                Destroy(gameObject);
-            });
-        }
+        if (collider.CompareTag("Player")) player = collider.GetComponent<Transform>();
     }
 }

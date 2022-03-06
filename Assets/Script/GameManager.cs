@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     public int playerHP = 0;
     public int maxHP = 100;
     [Header("Value")]
-    public bool startTimer;
+    public bool startTimer = false;
     public int dropItemSize = 0;
     void Awake()
     {
@@ -34,7 +34,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         playerHP = maxHP;
-        startTimer = true;
     }
 }
  
