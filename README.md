@@ -2,6 +2,28 @@
 
 This is my FIRST Game.
 
+## How to Play
+
+Movement = W,A,S,D
+
+LookAround = Mouse move.
+
+Fire = Left Mouse click.
+
+Aim = Right Mouse click.
+
+Jump = Space
+
+Sprint = Shift
+
+Reload = R
+
+Open ChestBox = E
+
+[Experimental]  Inventory = I
+
+Pause = G
+
 ## Assets
 
 Input System
