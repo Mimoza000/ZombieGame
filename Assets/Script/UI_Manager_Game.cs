@@ -21,9 +21,11 @@ public class UI_Manager_Game : MonoBehaviour
     [SerializeField] CanvasGroup pausePanel;
     [SerializeField] CanvasGroup optionPanel;
     [SerializeField] CanvasGroup resultPanel;
-    [SerializeField] CanvasGroup gameoverPanel;
+    [SerializeField] GameObject gameOver;
+    CanvasGroup gameOverPanel;
     [Header("Count Down Scene")]
-    [SerializeField] CanvasGroup gameStart;
+    [SerializeField] GameObject gameStart;
+    CanvasGroup gameStartPanel;
     [SerializeField] TextMeshProUGUI countDown;
 
     [Header("Disable when Player Input")]
@@ -128,6 +130,7 @@ public class UI_Manager_Game : MonoBehaviour
 
     public void Pause()
     {
+        
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         pausePanel.DOFade(1,duration);
@@ -142,7 +145,7 @@ public class UI_Manager_Game : MonoBehaviour
 
     public void GoToOptions()
     {
-        GameManager.Instance.menu = 0;
+        Debug.Log("Option pressed");
         // playerInput.input.Player.Disable();
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
