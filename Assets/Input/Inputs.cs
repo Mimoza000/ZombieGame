@@ -41,7 +41,7 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                     ""type"": ""Value"",
                     ""id"": ""83f6ea39-d72b-48c2-85fc-ebbf4005f224"",
                     ""expectedControlType"": ""Vector2"",
-                    ""processors"": ""InvertVector2(invertX=false),NormalizeVector2"",
+                    ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 },
@@ -116,6 +116,15 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""FireMode"",
+                    ""type"": ""Button"",
+                    ""id"": ""5b8ed3c0-5742-416f-86ae-7ef36408e412"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -179,7 +188,7 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                     ""id"": ""24b2a08d-7ff1-4acf-ac2f-d9a8a41ed123"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""InvertVector2(invertX=false)"",
                     ""groups"": ""KeyboardMouse"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
@@ -272,6 +281,17 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2ccf8c1d-c3b6-4551-8b46-f1decd2b29c7"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""FireMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -335,6 +355,7 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
         m_Game_Execute = m_Game.FindAction("Execute", throwIfNotFound: true);
         m_Game_Inventory = m_Game.FindAction("Inventory", throwIfNotFound: true);
         m_Game_Pause = m_Game.FindAction("Pause", throwIfNotFound: true);
+        m_Game_FireMode = m_Game.FindAction("FireMode", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_BackToGame = m_UI.FindAction("BackToGame", throwIfNotFound: true);
@@ -407,6 +428,7 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
     private readonly InputAction m_Game_Execute;
     private readonly InputAction m_Game_Inventory;
     private readonly InputAction m_Game_Pause;
+    private readonly InputAction m_Game_FireMode;
     public struct GameActions
     {
         private @Inputs m_Wrapper;
@@ -421,6 +443,7 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
         public InputAction @Execute => m_Wrapper.m_Game_Execute;
         public InputAction @Inventory => m_Wrapper.m_Game_Inventory;
         public InputAction @Pause => m_Wrapper.m_Game_Pause;
+        public InputAction @FireMode => m_Wrapper.m_Game_FireMode;
         public InputActionMap Get() { return m_Wrapper.m_Game; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -460,6 +483,9 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                 @Pause.started -= m_Wrapper.m_GameActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnPause;
+                @FireMode.started -= m_Wrapper.m_GameActionsCallbackInterface.OnFireMode;
+                @FireMode.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnFireMode;
+                @FireMode.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnFireMode;
             }
             m_Wrapper.m_GameActionsCallbackInterface = instance;
             if (instance != null)
@@ -494,6 +520,9 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @FireMode.started += instance.OnFireMode;
+                @FireMode.performed += instance.OnFireMode;
+                @FireMode.canceled += instance.OnFireMode;
             }
         }
     }
@@ -552,6 +581,7 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
         void OnExecute(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnFireMode(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

@@ -19,7 +19,7 @@
                     "type": "Value",
                     "id": "83f6ea39-d72b-48c2-85fc-ebbf4005f224",
                     "expectedControlType": "Vector2",
-                    "processors": "InvertVector2(invertX=false),NormalizeVector2",
+                    "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
                 },
@@ -94,6 +94,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "FireMode",
+                    "type": "Button",
+                    "id": "5b8ed3c0-5742-416f-86ae-7ef36408e412",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -157,7 +166,7 @@
                     "id": "24b2a08d-7ff1-4acf-ac2f-d9a8a41ed123",
                     "path": "<Mouse>/delta",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "InvertVector2(invertX=false)",
                     "groups": "KeyboardMouse",
                     "action": "Look",
                     "isComposite": false,
@@ -248,6 +257,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2ccf8c1d-c3b6-4551-8b46-f1decd2b29c7",
+                    "path": "<Keyboard>/b",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "FireMode",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

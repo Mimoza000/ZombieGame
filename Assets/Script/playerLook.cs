@@ -3,8 +3,8 @@ using UnityEngine;
 public class playerLook : MonoBehaviour
 {
     [Header("Value")]
-    [SerializeField] float sensitivity = 0.3f;
-    [SerializeField] float aimSensitivity = 0.1f;
+    [SerializeField] float sensitivity;
+    [SerializeField] float aimSensitivity;
     [SerializeField] float maxRot = 80;
     [SerializeField] float minRot = -80;
     float xRotation;
@@ -16,10 +16,9 @@ public class playerLook : MonoBehaviour
     {
         direction.x *= sensitivity * Time.deltaTime;
         direction.y *= sensitivity * Time.deltaTime;
-
         xRotation += direction.y;
         xRotation = Mathf.Clamp(xRotation, minRot, maxRot);
-
+        
         Camera.main.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
         transform.Rotate(Vector3.up * direction.x);
     }

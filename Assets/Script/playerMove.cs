@@ -3,16 +3,16 @@ using UnityEngine;
 public class playerMove : MonoBehaviour
 {
     [Header("Value")]
-    [SerializeField] float gravity = -9.81f;
+    float gravity = -19.62f;
     [SerializeField] Transform groundCheck;
-    [SerializeField] float groundDistance = 0.5f;
-    [SerializeField] float jumpHeight = 15;
+    float groundDistance = 0.5f;
+    float jumpHeight = 2;
     [SerializeField] LayerMask groundMask;
 
-    [SerializeField] float playerSpeed;
-    [SerializeField] float sprintSpeed = 5;
-    [SerializeField] float walkSpeed = 3;
-    Vector3 velocity = Vector3.zero;
+    float playerSpeed;
+    float sprintSpeed = 5;
+    float walkSpeed = 3;
+    Vector3 velocity;
     bool isGrounded;
     CharacterController controller;
     // Start is called before the first frame update
@@ -26,24 +26,28 @@ public class playerMove : MonoBehaviour
     /// 
     /// </summary>
     /// <param name="direction"></param>
-    public void Move(Vector3 direction)
+    public void Move(Vector2 direction)
     {
-        direction = transform.right * direction.x + transform.forward * direction.z;
-        controller.Move(direction * playerSpeed * Time.deltaTime);
+        Vector3 localDirection = transform.right * direction.x + transform.forward * direction.y;
+        controller.Move(localDirection * playerSpeed * Time.deltaTime);
     }
 
-    public void Jump()
+    public void Gravity(bool isJumped)
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        Debug.Log(isGrounded);
+
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2;
-            return;
         }
-        else if (isGrounded) velocity.y = jumpHeight;
-        velocity.y += gravity * Time.deltaTime * Time.deltaTime;
-        controller.Move(velocity);
+
+        if (isGrounded && isJumped)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
+        }
+        
+        velocity.y += gravity * Time.deltaTime;;
+        controller.Move(velocity * Time.deltaTime);
     }
 
     public void Sprint(bool Trigger)

@@ -9,9 +9,10 @@ public class weaponFire : MonoBehaviour
     [SerializeField] TrailRenderer tracerEffect;
     [SerializeField] UI_Manager_Game crosshair;
     [Header("Debug")]
-    public float reloadingTime = 0;
-    public bool isShooting = false;
-    public bool nowReloading = false;
+    bool isShooting;
+    float reloadingTime = 3;
+    public float nowReloadTime;
+    bool nowReloading;
     [SerializeField] Ray ray_0;
     [SerializeField] Ray ray_1;
     public RaycastHit hitInfo_0;
@@ -20,13 +21,12 @@ public class weaponFire : MonoBehaviour
     public int ammo = 0;
     public int maxAmmo = 30;
     [Tooltip("sec")]
-    [SerializeField] float reloadTime = 1;
+    public float reloadTime = 3.3f;
     [Tooltip("100%")]
-    [SerializeField] int fireRate = 120;
+    float fireRate = 0.12f;
     [SerializeField] float fireRecoil = 0;
-    [SerializeField] bool enableSemiAuto = false;
-    [SerializeField] int damage = 1;
-    [SerializeField] float damagedCrosshairTime = 0.1f;
+    bool enableSemiAuto = false;
+    [SerializeField] int damage = 1;// crosshairTime = 0.1f;
 
     enemySystem enemy;
     /*LineRenderer line;*/
@@ -34,31 +34,29 @@ public class weaponFire : MonoBehaviour
     void Start()
     {
         ammo = maxAmmo;
-        isShooting = true;
-        crosshair.DamagedCrosshair(true,0,true);
+        // crosshair.Damaged// crosshair(true,0,true);
         /*line = GetComponent<LineRenderer>();*/
     }
 
     // Update is called once per frame
-    public async void Fire()
-    {    
-       // Shooting System
-        if (isShooting)
-        {
-            isShooting = false;
-            if (ammo <= 0 && !nowReloading) ReloadStart();
-            if (nowReloading) return;
-            if (enableSemiAuto) 
-            {
-                await UniTask.Delay(fireRate);
-            }
-            return;
-        }
-        if (GameManager.Instance.fire == 0) crosshair.DamagedCrosshair(false, damagedCrosshairTime);
-        if (nowReloading) reloadingTime += Time.deltaTime;
-        else reloadingTime = 0;
+    public void Fire(bool trigger)
+    {
+        
+        isShooting = trigger;
+        if (enableSemiAuto && !trigger) return;
+        if (enableSemiAuto) Shot();
+        
+        //if (GameManager.Instance.fire == 0) // crosshair.Damaged// crosshair(false, damaged// crosshairTime);
+    }
 
-        if (GameManager.Instance.reload == 1 && !nowReloading && ammo < 30) ReloadStart(); 
+    void Update()
+    {
+        Debug.Log(nowReloading);
+        if (isShooting && !enableSemiAuto)
+        {
+            
+            Shot();
+        }
     }
 
     private void FixedUpdate()
@@ -79,32 +77,34 @@ public class weaponFire : MonoBehaviour
         }
     }
 
-    void Shooting()
+    async void Shot()
     {
+        // Reload Check
+        if (ammo <= 0 && !nowReloading) ReloadStart();
+        if (nowReloading) return;
+
         ammo--;
         muzzleFlash.Play();
-        isShooting = true;
-
+        await UniTask.Delay((int)fireRate * 1000);
         if (hitInfo_1.collider.CompareTag("Enemy")) enemy = hitInfo_1.collider.GetComponentInParent<enemySystem>();
         if (enemy != null && !enemy.animator.GetBool("dead"))
         {
             enemy.Damaged(damage);
-            crosshair.DamagedCrosshair(true, damagedCrosshairTime);
+            // crosshair.Damaged// crosshair(true, damaged// crosshairTime);
         }
-
+        
     }
 
-    public void ReloadStart()
+    public async void ReloadStart()
     {
-        isShooting = false;
         nowReloading = true;
-        // await UniTask.Delay(reloadingTime);
+        await UniTask.Delay((int)reloadingTime * 1000);
+        ReloadFinish();
     }
 
     void ReloadFinish()
     {
         ammo = maxAmmo;
-        isShooting = true;
         nowReloading = false;
     }
 }

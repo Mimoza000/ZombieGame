@@ -3,58 +3,62 @@ using UnityEngine.InputSystem;
 
 public class InputController : MonoBehaviour
 {
+    [SerializeField] playerMove move;
+    [SerializeField] playerLook look;
     [SerializeField] weaponFire gun;
     [SerializeField] weaponAim aim;
-    playerMove move;
-    playerLook look;
-    PlayerInput input;
-    private void Awake()
+    [SerializeField] PlayerInput input;
+
+    void Update()
     {
-        TryGetComponent<PlayerInput>(out input);
-        TryGetComponent<playerMove>(out move);
-        TryGetComponent<playerLook>(out look);
+        move.Move(input.actions["Move"].ReadValue<Vector2>());
+        if (input.actions["Jump"].triggered) move.Gravity(true);
+        else move.Gravity(false);
+        look.Look(input.actions["Look"].ReadValue<Vector2>());
+        
     }
 
     void OnEnable()
     {
-        input.actions["Fire"].started += OnFire;
         input.actions["Reload"].started += OnReload;
-        input.actions["Pause"].started += OnPause;
+        //input.actions["Pause"].started += OnPause;
         input.actions["Sprint"].started += OnSprint;
         input.actions["Sprint"].canceled += OnSprint;
-        input.actions["Look"].performed += OnLook;
-        // input.actions["Jump"].started += OnJump;
+        input.actions["Aim"].started += OnAim;
+        input.actions["Aim"].canceled += OnAimCanceled;
+        input.actions["FireMode"].started += OnFireMode;
+        input.actions["Fire"].started += OnFire;
+        input.actions["Fire"].canceled += OnFireCanceled;
     }
 
 
 
     void OnDisable()
     {
-        input.actions["Fire"].started -= OnFire;
         input.actions["Reload"].started -= OnReload;
-        input.actions["Pause"].started += OnPause;
+        //input.actions["Pause"].started += OnPause;
         input.actions["Sprint"].started -= OnSprint;
         input.actions["Sprint"].canceled -= OnSprint;
-        // input.actions["Jump"].started -= OnJump;
-        input.actions["Look"].performed -= OnLook;
+        input.actions["Aim"].started += OnAim;
+        input.actions["Aim"].canceled += OnAimCanceled;
+        input.actions["FireMode"].started -= OnFireMode;
+        input.actions["Fire"].started -= OnFire;
+        input.actions["Fire"].canceled -= OnFireCanceled;
     }
 
-    void OnJump(InputAction.CallbackContext obj)
+    void OnFireMode(InputAction.CallbackContext obj)
     {
-        move.Jump();
+
     }
 
-    void Update()
+    void OnAim(InputAction.CallbackContext obj)
     {
-        var direction = input.actions["Move"].ReadValue<Vector2>();
-        var setDirection = new Vector3(direction.x,0,direction.y);
-        move.Move(setDirection);
-        if (input.actions["Jump"].phase == InputActionPhase.Performed) move.Jump();
+        aim.Aim(true);
     }
 
-    void OnPause(InputAction.CallbackContext obj)
+    void OnAimCanceled(InputAction.CallbackContext obj)
     {
-
+        aim.Aim(false);
     }
 
     void OnReload(InputAction.CallbackContext obj)
@@ -64,17 +68,17 @@ public class InputController : MonoBehaviour
 
     void OnFire(InputAction.CallbackContext obj)
     {
-        gun.Fire();
+        gun.Fire(true);
     }
 
-    void OnLook(InputAction.CallbackContext obj)
+    void OnFireCanceled(InputAction.CallbackContext obj)
     {
-        var direction = obj.ReadValue<Vector2>();
-        look.Look(direction);
+        gun.Fire(false);
     }
 
     void OnSprint(InputAction.CallbackContext obj)
     {
+        Debug.Log("NOW SPrint");
         switch ( obj.phase )
         {
             case InputActionPhase.Started:

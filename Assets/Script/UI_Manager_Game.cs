@@ -36,36 +36,32 @@ public class UI_Manager_Game : MonoBehaviour
     int min = 0;
     int hour = 0;
     
-    async void Awake()
+    async void Start()
     {
-        look.enabled = false;
-        move.enabled = false;
-        aim.enabled = false;
-        fire.enabled = false;
+        // look.enabled = false;
+        // move.enabled = false;
+        // aim.enabled = false;
+        // fire.enabled = false;
         gameStart.alpha = 1;
-        //await UniTask.Delay(1000);
+        await UniTask.Delay(1000);
         countDown.text = "3";
-        //await UniTask.Delay(2000);
+        await UniTask.Delay(1000);
         countDown.text = "2";
-        //await UniTask.Delay(3000);
+        await UniTask.Delay(1000);
         countDown.text = "1";
-        //await UniTask.Delay(4000);
+        await UniTask.Delay(1000);
         countDown.text = "Game Start!";
         gameStart.DOFade(0,1);
-        look.enabled = true;
-        move.enabled = true;
-        aim.enabled = true;
-        fire.enabled = true;
-        GameManager.Instance.startTimer = true;
-    }
-
-    private void Start()
-    {
+        // look.enabled = true;
+        // move.enabled = true;
+        // aim.enabled = true;
+        // fire.enabled = true;
         playerHP_Bar.maxValue = GameManager.Instance.maxHP;
         pausePanel.alpha = 0;
         optionPanel.alpha = 0;
         resultPanel.alpha = 0;
         gameoverPanel.alpha = 0;
+        GameManager.Instance.startTimer = true;
     }
 
     private void Update()
@@ -73,7 +69,7 @@ public class UI_Manager_Game : MonoBehaviour
         playerHP_Bar.value = GameManager.Instance.playerHP;
         playerHP.text = $"{GameManager.Instance.playerHP.ToString()} / {GameManager.Instance.maxHP.ToString()}";
         Ammo.text = $"Ammo: {fire.ammo.ToString()}/{fire.maxAmmo.ToString()}";
-        Reload.text = $"Reload: {fire.reloadingTime}";
+        Reload.text = $"Reload: {fire.nowReloadTime}";
         enegyCoreCount.text = $"EnegyCore: {GameManager.Instance.dropItemSize.ToString()}";
 
         // Open Menu Panel
