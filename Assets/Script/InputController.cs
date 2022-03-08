@@ -8,6 +8,7 @@ public class InputController : MonoBehaviour
     [SerializeField] weaponFire gun;
     [SerializeField] weaponAim aim;
     [SerializeField] PlayerInput input;
+    [SerializeField] UI_Manager_Game UI;
 
     void Update()
     {
@@ -21,7 +22,8 @@ public class InputController : MonoBehaviour
     void OnEnable()
     {
         input.actions["Reload"].started += OnReload;
-        //input.actions["Pause"].started += OnPause;
+        input.actions["Pause"].started += OnPause;
+        input.actions["BackToGame"].started += OnGame;
         input.actions["Sprint"].started += OnSprint;
         input.actions["Sprint"].canceled += OnSprint;
         input.actions["Aim"].started += OnAim;
@@ -36,7 +38,7 @@ public class InputController : MonoBehaviour
     void OnDisable()
     {
         input.actions["Reload"].started -= OnReload;
-        //input.actions["Pause"].started += OnPause;
+        input.actions["Pause"].started += OnPause;
         input.actions["Sprint"].started -= OnSprint;
         input.actions["Sprint"].canceled -= OnSprint;
         input.actions["Aim"].started += OnAim;
@@ -46,9 +48,21 @@ public class InputController : MonoBehaviour
         input.actions["Fire"].canceled -= OnFireCanceled;
     }
 
+    void OnGame(InputAction.CallbackContext obj)
+    {
+        input.SwitchCurrentActionMap("Game");
+        UI.BackToGame();
+    }
+
+    void OnPause(InputAction.CallbackContext obj)
+    {
+        input.SwitchCurrentActionMap("UI");
+        UI.Pause();
+    }
+
     void OnFireMode(InputAction.CallbackContext obj)
     {
-
+        gun.enableSemiAuto = !gun.enableSemiAuto;
     }
 
     void OnAim(InputAction.CallbackContext obj)

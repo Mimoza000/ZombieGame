@@ -128,13 +128,13 @@ public class UI_Manager_Game : MonoBehaviour
 
     public void Pause()
     {
-
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        pausePanel.DOFade(1,duration);
     }
 
     public void BackToGame()
     {
-        GameManager.Instance.menu = 0;
-        // playerInput.input.Player.Enable();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         pausePanel.DOFade(0,duration);

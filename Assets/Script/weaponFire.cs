@@ -23,17 +23,19 @@ public class weaponFire : MonoBehaviour
     [Tooltip("sec")]
     public float reloadTime = 3.3f;
     [Tooltip("100%")]
-    float fireRate = 0.12f;
+    float fireRate = 2;
     [SerializeField] float fireRecoil = 0;
-    bool enableSemiAuto = false;
+    public bool enableSemiAuto = false;
     [SerializeField] int damage = 1;// crosshairTime = 0.1f;
-
+    [SerializeField] AudioClip clip;
+    [SerializeField] AudioSource fire;
     enemySystem enemy;
     /*LineRenderer line;*/
 
     void Start()
     {
         ammo = maxAmmo;
+        nowReloadTime = 0;
         // crosshair.Damaged// crosshair(true,0,true);
         /*line = GetComponent<LineRenderer>();*/
     }
@@ -51,12 +53,15 @@ public class weaponFire : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(nowReloading);
         if (isShooting && !enableSemiAuto)
         {
-            
             Shot();
         }
+        if (nowReloading) 
+        {
+            nowReloadTime += Time.deltaTime;
+        }
+        else nowReloadTime = 0;
     }
 
     private void FixedUpdate()
@@ -85,14 +90,16 @@ public class weaponFire : MonoBehaviour
 
         ammo--;
         muzzleFlash.Play();
-        await UniTask.Delay((int)fireRate * 1000);
+        fire.PlayOneShot(clip);
+        
         if (hitInfo_1.collider.CompareTag("Enemy")) enemy = hitInfo_1.collider.GetComponentInParent<enemySystem>();
         if (enemy != null && !enemy.animator.GetBool("dead"))
         {
             enemy.Damaged(damage);
             // crosshair.Damaged// crosshair(true, damaged// crosshairTime);
         }
-        
+        await UniTask.Delay((int)fireRate * 1000);
+        return;
     }
 
     public async void ReloadStart()
@@ -106,5 +113,10 @@ public class weaponFire : MonoBehaviour
     {
         ammo = maxAmmo;
         nowReloading = false;
+    }
+
+    void Timer()
+    {
+        reloadingTime += Time.deltaTime;
     }
 }
