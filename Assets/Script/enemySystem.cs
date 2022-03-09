@@ -57,6 +57,7 @@ public class enemySystem : MonoBehaviour
         agent.destination = player.position;
         distance = agent.remainingDistance;
 
+        // Check State
         if (status.startWalkDistance >= distance && status.stopDistance <= distance)
         {
             if (activeLimiter) SetAnimator(true, false, false, localWalkSpeed);

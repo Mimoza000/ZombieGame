@@ -10,7 +10,7 @@ public class weaponFire : MonoBehaviour
     [SerializeField] UI_Manager_Game crosshair;
     [Header("Debug")]
     bool isShooting;
-    float reloadingTime = 3;
+    float reloadingTime = 3.3f;
     public float nowReloadTime;
     bool nowReloading;
     [SerializeField] Ray ray_0;
@@ -19,17 +19,17 @@ public class weaponFire : MonoBehaviour
     public RaycastHit hitInfo_1;
     [Header("Value")]
     public int ammo = 0;
-    public int maxAmmo = 30;
-    [Tooltip("sec")]
-    public float reloadTime = 3.3f;
+    public int maxAmmo = 20;
+    
     [Tooltip("100%")]
-    float fireRate = 2;
+    float fireRate = 0.1f;
     [SerializeField] float fireRecoil = 0;
     public bool enableSemiAuto = false;
-    [SerializeField] int damage = 1;// crosshairTime = 0.1f;
+    [SerializeField] int damage = 1;
     [SerializeField] AudioClip clip;
     [SerializeField] AudioSource fire;
     enemySystem enemy;
+    float duration = 0.5f;
     /*LineRenderer line;*/
 
     void Start()
@@ -40,7 +40,6 @@ public class weaponFire : MonoBehaviour
         /*line = GetComponent<LineRenderer>();*/
     }
 
-    // Update is called once per frame
     public void Fire(bool trigger)
     {
         
@@ -57,26 +56,34 @@ public class weaponFire : MonoBehaviour
         {
             Shot();
         }
+
         if (nowReloading) 
         {
             nowReloadTime += Time.deltaTime;
         }
         else nowReloadTime = 0;
+
+        if (!hitInfo_1.collider.CompareTag("Enemy") && !enableSemiAuto)
+        {   
+            crosshair.HitCrossHairFade(false,enableSemiAuto,duration,hitInfo_1);
+        }
     }
 
     private void FixedUpdate()
     {
-        // Debug用目線表示
+        // For Debug
         ray_0.origin = Camera.main.transform.position;
         ray_0.direction = Camera.main.transform.forward;
         if (Physics.Raycast(ray_0, out hitInfo_0, Mathf.Infinity, -1, QueryTriggerInteraction.Ignore))
         {
+            // Camera
             Debug.DrawRay(ray_0.origin, ray_0.direction * 100, Color.red, 1);
             Debug.DrawLine(ray_0.origin, hitInfo_0.collider.transform.position, Color.green, 1);
 
             ray_1.origin = muzzle.transform.position;
             ray_1.direction = hitInfo_0.point - ray_1.origin;
 
+            // Camera + Muzzle
             Physics.Raycast(ray_1, out hitInfo_1, Mathf.Infinity, -1, QueryTriggerInteraction.Ignore);
             Debug.DrawRay(ray_1.origin, ray_1.direction * 100, Color.blue, 1);
         }
@@ -93,13 +100,14 @@ public class weaponFire : MonoBehaviour
         fire.PlayOneShot(clip);
         
         if (hitInfo_1.collider.CompareTag("Enemy")) enemy = hitInfo_1.collider.GetComponentInParent<enemySystem>();
-        if (enemy != null && !enemy.animator.GetBool("dead"))
+
+        await UniTask.Delay((int)fireRate * 1000);
+
+        if (enemy != null && !enemy.animator.GetBool("dead") && !crosshair.HitCrossHairAlphaCheck())
         {
             enemy.Damaged(damage);
-            // crosshair.Damaged// crosshair(true, damaged// crosshairTime);
+            crosshair.HitCrossHairFade(true,enableSemiAuto,duration,hitInfo_1);
         }
-        await UniTask.Delay((int)fireRate * 1000);
-        return;
     }
 
     public async void ReloadStart()

@@ -14,14 +14,12 @@ public class weaponAim : MonoBehaviour
         if (isAiming)
         {
             transform.DOLocalMove(aimPoint.localPosition, aimingTime)/*.SetEase(Ease.InOutCirc)*/;
-            crosshair.AimingCrosshair(true,aimingTime);
-            isAiming = true;
+            crosshair.CrossHairFade(false,aimingTime);
         }
         else
         {
             transform.DOLocalMove(Vector3.zero, aimingTime)/*.SetEase(Ease.InOutCirc)*/;
-            crosshair.AimingCrosshair(false,aimingTime);
-            isAiming = false;
+            crosshair.CrossHairFade(true,aimingTime);
         }
     }
 }

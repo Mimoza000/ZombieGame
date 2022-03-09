@@ -21,7 +21,7 @@ public class InputController : MonoBehaviour
     void OnEnable()
     {
         input.actions["Reload"].started += OnReload;
-        input.actions["Pause"].started += OnPause;
+        input.actions["Pause"].started += OnUI;
         input.actions["BackToGame"].started += OnGame;
         input.actions["Sprint"].started += OnSprint;
         input.actions["Sprint"].canceled += OnSprint;
@@ -37,7 +37,7 @@ public class InputController : MonoBehaviour
     void OnDisable()
     {
         input.actions["Reload"].started -= OnReload;
-        input.actions["Pause"].started += OnPause;
+        input.actions["Pause"].started += OnUI;
         input.actions["Sprint"].started -= OnSprint;
         input.actions["Sprint"].canceled -= OnSprint;
         input.actions["Aim"].started += OnAim;
@@ -53,7 +53,7 @@ public class InputController : MonoBehaviour
         UI.ToGame();
     }
 
-    void OnPause(InputAction.CallbackContext obj)
+    void OnUI(InputAction.CallbackContext obj)
     {
         input.SwitchCurrentActionMap("UI");
         UI.ToPause();
@@ -91,7 +91,6 @@ public class InputController : MonoBehaviour
 
     void OnSprint(InputAction.CallbackContext obj)
     {
-        Debug.Log("NOW SPrint");
         switch ( obj.phase )
         {
             case InputActionPhase.Started:

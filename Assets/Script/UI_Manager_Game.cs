@@ -4,10 +4,12 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine.SceneManagement;
 using Cysharp.Threading.Tasks;
+using UnityEngine.InputSystem;
 
 public class UI_Manager_Game : MonoBehaviour
 {
     [Header("References")]
+    [SerializeField] PlayerInput input;
     [SerializeField] Image crosshair;
     [SerializeField] Image hitCrosshair;
     [SerializeField] Slider playerHP_Bar;
@@ -16,26 +18,20 @@ public class UI_Manager_Game : MonoBehaviour
     [SerializeField] TextMeshProUGUI Reload;
     [SerializeField] TextMeshProUGUI enegyCoreCount;
     [SerializeField] TextMeshProUGUI timer;
-    [Header("Canvas Groups")]
     [SerializeField] float duration = 1;
-    CanvasGroup gameStartPanel;
-    CanvasGroup pausePanel;
-    CanvasGroup optionPanel;
-    CanvasGroup resultPanel;
-    CanvasGroup gameOverPanel;
-    [Header("Panel GameObject")]
     [SerializeField] GameObject pause;
     [SerializeField] GameObject option;
     [SerializeField] GameObject gameStart;
     [SerializeField] GameObject gameOver;
     [SerializeField] GameObject result;
     [SerializeField] TextMeshProUGUI countDown;
-
-    [Header("Disable when Player Input")]
-    [SerializeField] playerLook look;
-    [SerializeField] playerMove move;
-    [SerializeField] weaponAim aim;
     [SerializeField] weaponFire fire;
+    
+    CanvasGroup gameStartPanel;
+    CanvasGroup pausePanel;
+    CanvasGroup optionPanel;
+    CanvasGroup resultPanel;
+    CanvasGroup gameOverPanel;
     float time = 0;
     float sec = 0;
     int min = 0;
@@ -51,65 +47,61 @@ public class UI_Manager_Game : MonoBehaviour
         resultPanel = result.GetComponent<CanvasGroup>();
         optionPanel =option.GetComponent<CanvasGroup>();
 
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
         pausePanel.alpha = 0;
         optionPanel.alpha = 0;
         resultPanel.alpha = 0;
         gameOverPanel.alpha = 0;
         gameStartPanel.alpha = 0;
+        crosshair.color = new Color(1,1,1,1);
+        hitCrosshair.color = new Color32(255,0,0,0);
 
         pause.SetActive(false);
         option.SetActive(false);
         result.SetActive(false);
         gameOver.SetActive(false);
+        gameStart.SetActive(false);
 
         playerHP_Bar.maxValue = GameManager.Instance.maxHP;
     }
 
     async void Start()
     {
-        // look.enabled = false;
-        // move.enabled = false;
-        // aim.enabled = false;
-        // fire.enabled = false;
+        input.SwitchCurrentActionMap("UI");
+
+        gameStart.SetActive(true);
         gameStartPanel.alpha = 1;
+
         await UniTask.Delay(1000);
         countDown.text = "3";
+
         await UniTask.Delay(1000);
         countDown.text = "2";
+
         await UniTask.Delay(1000);
         countDown.text = "1";
+
         await UniTask.Delay(1000);
         countDown.text = "Game Start!";
+
         gameStartPanel.DOFade(0,duration)
         .OnComplete(() => gameStart.SetActive(false));
 
-        // look.enabled = true;
-        // move.enabled = true;
-        // aim.enabled = true;
-        // fire.enabled = true;
-
+        input.SwitchCurrentActionMap("Game");
         GameManager.Instance.startTimer = true;
     }
 
     private void Update()
     {
+        Debug.Log(hitCrosshair.color.a);
+        
         playerHP_Bar.value = GameManager.Instance.playerHP;
         playerHP.text = $"{GameManager.Instance.playerHP.ToString()} / {GameManager.Instance.maxHP.ToString()}";
         Ammo.text = $"Ammo: {fire.ammo.ToString()}/{fire.maxAmmo.ToString()}";
         Reload.text = $"Reload: {fire.nowReloadTime}";
         enegyCoreCount.text = $"EnegyCore: {GameManager.Instance.dropItemSize.ToString()}";
-
-        // Open Menu Panel
-        if (GameManager.Instance.menu == 1) 
-        {
-            look.enabled = false;
-            move.enabled = false;
-            aim.enabled = false;
-            fire.enabled = false;
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-            pausePanel.DOFade(1,duration);
-        }
 
         // Timer
         if (GameManager.Instance.startTimer) 
@@ -122,31 +114,28 @@ public class UI_Manager_Game : MonoBehaviour
         timer.text = $"{hour.ToString("D2")} : {min.ToString("D2")} : {sec.ToString("F2")}";
     }
 
-    /// <summary>
-    /// If is aiming, bool needs to be true.
-    /// </summary>
-    /// <param name="enabled"></param>
-    /// <param name="time"></param>
-    public void AimingCrosshair(bool enabled,float time)
+    public void CrossHairFade(bool IN,float duration)
     {
-        if (enabled) crosshair.DOFade(0, time);
-        else crosshair.DOFade(1, time);
+        if (IN) crosshair.DOFade(1,duration);
+        else crosshair.DOFade(0,duration);
     }
 
-    /// <summary>
-    /// If is Damaged, bool needs to be true.
-    /// </summary>
-    /// <param name="enabled"></param>
-    /// <param name="time"></param>
-    public void DamagedCrosshair(bool enabled,float time,bool FadeSoon = false)
+    public void HitCrossHairFade(bool IN,bool enableSemiAuto,float duration,RaycastHit hitInfo)
     {
-        if (FadeSoon) hitCrosshair.DOFade(0, 0);
-        else
+        if (IN) hitCrosshair.DOFade(1,duration)
+        .OnComplete(() => 
         {
-            if (enabled) hitCrosshair.DOFade(1, time);
-            else hitCrosshair.DOFade(0, time);
-        }
+            if (enableSemiAuto) hitCrosshair.DOFade(0,duration);
+        });
+        else hitCrosshair.DOFade(0,duration);
     }
+
+    public bool HitCrossHairAlphaCheck()
+    {
+        if (hitCrosshair.color.a == 1) return true;
+        else return false;
+    }
+    
 
     public void LoadLobby()
     {
@@ -155,24 +144,35 @@ public class UI_Manager_Game : MonoBehaviour
 
     public void ToPause()
     {
+        gameOver.SetActive(false);
+        gameStart.SetActive(false);
+        result.SetActive(false);
+        option.SetActive(false);
+
+        if (option.activeInHierarchy) 
+        {
+            optionPanel.DOFade(0,duration)
+            .OnComplete(() => option.SetActive(false));
+        }
         pause.SetActive(true);
         pausePanel.DOFade(1,duration);
+
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
 
     public void ToGame()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        input.SwitchCurrentActionMap("Game");
         pausePanel.DOFade(0,duration)
         .OnComplete(() => pause.SetActive(false));
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void ToOptions()
     {
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
         pausePanel.DOFade(0,duration)
         .OnComplete(() => 
         {
@@ -180,6 +180,8 @@ public class UI_Manager_Game : MonoBehaviour
             option.SetActive(true);
             optionPanel.DOFade(1,duration);
         });
-        
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 }
