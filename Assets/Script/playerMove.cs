@@ -32,10 +32,13 @@ public class playerMove : MonoBehaviour
         controller.Move(localDirection * playerSpeed * Time.deltaTime);
     }
 
-    public void Gravity(bool isJumped)
+    void FixedUpdate()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+    }
 
+    public void Gravity(bool isJumped)
+    {
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2;
@@ -52,6 +55,7 @@ public class playerMove : MonoBehaviour
 
     public void Sprint(bool Trigger)
     {
+        if (GameManager.Instance.playerHP <= GameManager.Instance.playerHP / 2) return;
         if (Trigger) playerSpeed = sprintSpeed;
         else playerSpeed = walkSpeed;
     }

@@ -63,9 +63,9 @@ public class weaponFire : MonoBehaviour
         }
         else nowReloadTime = 0;
 
-        if (!hitInfo_1.collider.CompareTag("Enemy") && !enableSemiAuto)
+        if (enemy != null && !enableSemiAuto)
         {   
-            crosshair.HitCrossHairFade(false,enableSemiAuto,duration,hitInfo_1);
+            crosshair.HitCrossHairFade(false,false,duration,hitInfo_1);
         }
     }
 
@@ -99,11 +99,9 @@ public class weaponFire : MonoBehaviour
         muzzleFlash.Play();
         fire.PlayOneShot(clip);
         
-        if (hitInfo_1.collider.CompareTag("Enemy")) enemy = hitInfo_1.collider.GetComponentInParent<enemySystem>();
-
         await UniTask.Delay((int)fireRate * 1000);
-
-        if (enemy != null && !enemy.animator.GetBool("dead") && !crosshair.HitCrossHairAlphaCheck())
+        if (hitInfo_1.collider.CompareTag("Enemy")) enemy = hitInfo_1.collider.GetComponentInParent<enemySystem>();
+        if (enemy != null && !enemy.animator.GetBool("dead"))
         {
             enemy.Damaged(damage);
             crosshair.HitCrossHairFade(true,enableSemiAuto,duration,hitInfo_1);

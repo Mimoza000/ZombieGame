@@ -130,9 +130,9 @@ public class UI_Manager_Game : MonoBehaviour
         else hitCrosshair.DOFade(0,duration);
     }
 
-    public bool HitCrossHairAlphaCheck()
+    public bool HitCrossHairAlphaCheck(float value)
     {
-        if (hitCrosshair.color.a == 1) return true;
+        if (hitCrosshair.color.a == value) return true;
         else return false;
     }
     
