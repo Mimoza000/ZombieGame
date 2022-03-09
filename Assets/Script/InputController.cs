@@ -16,7 +16,6 @@ public class InputController : MonoBehaviour
         if (input.actions["Jump"].triggered) move.Gravity(true);
         else move.Gravity(false);
         look.Look(input.actions["Look"].ReadValue<Vector2>());
-        
     }
 
     void OnEnable()
@@ -51,13 +50,13 @@ public class InputController : MonoBehaviour
     void OnGame(InputAction.CallbackContext obj)
     {
         input.SwitchCurrentActionMap("Game");
-        UI.BackToGame();
+        UI.ToGame();
     }
 
     void OnPause(InputAction.CallbackContext obj)
     {
         input.SwitchCurrentActionMap("UI");
-        UI.Pause();
+        UI.ToPause();
     }
 
     void OnFireMode(InputAction.CallbackContext obj)

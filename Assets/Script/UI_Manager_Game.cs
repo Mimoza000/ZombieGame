@@ -16,16 +16,19 @@ public class UI_Manager_Game : MonoBehaviour
     [SerializeField] TextMeshProUGUI Reload;
     [SerializeField] TextMeshProUGUI enegyCoreCount;
     [SerializeField] TextMeshProUGUI timer;
-    [Header("Panels")]
+    [Header("Canvas Groups")]
     [SerializeField] float duration = 1;
-    [SerializeField] CanvasGroup pausePanel;
-    [SerializeField] CanvasGroup optionPanel;
-    [SerializeField] CanvasGroup resultPanel;
-    [SerializeField] GameObject gameOver;
-    CanvasGroup gameOverPanel;
-    [Header("Count Down Scene")]
-    [SerializeField] GameObject gameStart;
     CanvasGroup gameStartPanel;
+    CanvasGroup pausePanel;
+    CanvasGroup optionPanel;
+    CanvasGroup resultPanel;
+    CanvasGroup gameOverPanel;
+    [Header("Panel GameObject")]
+    [SerializeField] GameObject pause;
+    [SerializeField] GameObject option;
+    [SerializeField] GameObject gameStart;
+    [SerializeField] GameObject gameOver;
+    [SerializeField] GameObject result;
     [SerializeField] TextMeshProUGUI countDown;
 
     [Header("Disable when Player Input")]
@@ -37,14 +40,38 @@ public class UI_Manager_Game : MonoBehaviour
     float sec = 0;
     int min = 0;
     int hour = 0;
-    
+
+    void Awake()
+    {
+        // Initalize
+
+        gameStartPanel = gameStart.GetComponent<CanvasGroup>();
+        gameOverPanel = gameOver.GetComponent<CanvasGroup>();
+        pausePanel = pause.GetComponent<CanvasGroup>();
+        resultPanel = result.GetComponent<CanvasGroup>();
+        optionPanel =option.GetComponent<CanvasGroup>();
+
+        pausePanel.alpha = 0;
+        optionPanel.alpha = 0;
+        resultPanel.alpha = 0;
+        gameOverPanel.alpha = 0;
+        gameStartPanel.alpha = 0;
+
+        pause.SetActive(false);
+        option.SetActive(false);
+        result.SetActive(false);
+        gameOver.SetActive(false);
+
+        playerHP_Bar.maxValue = GameManager.Instance.maxHP;
+    }
+
     async void Start()
     {
         // look.enabled = false;
         // move.enabled = false;
         // aim.enabled = false;
         // fire.enabled = false;
-        gameStart.alpha = 1;
+        gameStartPanel.alpha = 1;
         await UniTask.Delay(1000);
         countDown.text = "3";
         await UniTask.Delay(1000);
@@ -53,16 +80,14 @@ public class UI_Manager_Game : MonoBehaviour
         countDown.text = "1";
         await UniTask.Delay(1000);
         countDown.text = "Game Start!";
-        gameStart.DOFade(0,1);
+        gameStartPanel.DOFade(0,duration)
+        .OnComplete(() => gameStart.SetActive(false));
+
         // look.enabled = true;
         // move.enabled = true;
         // aim.enabled = true;
         // fire.enabled = true;
-        playerHP_Bar.maxValue = GameManager.Instance.maxHP;
-        pausePanel.alpha = 0;
-        optionPanel.alpha = 0;
-        resultPanel.alpha = 0;
-        gameoverPanel.alpha = 0;
+
         GameManager.Instance.startTimer = true;
     }
 
@@ -128,28 +153,33 @@ public class UI_Manager_Game : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public void Pause()
+    public void ToPause()
     {
-        
+        pause.SetActive(true);
+        pausePanel.DOFade(1,duration);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        pausePanel.DOFade(1,duration);
     }
 
-    public void BackToGame()
+    public void ToGame()
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        pausePanel.DOFade(0,duration);
+        pausePanel.DOFade(0,duration)
+        .OnComplete(() => pause.SetActive(false));
     }
 
-    public void GoToOptions()
+    public void ToOptions()
     {
-        Debug.Log("Option pressed");
-        // playerInput.input.Player.Disable();
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        pausePanel.DOFade(0,duration);
-        optionPanel.DOFade(1,duration);
+        pausePanel.DOFade(0,duration)
+        .OnComplete(() => 
+        {
+            pause.SetActive(false);
+            option.SetActive(true);
+            optionPanel.DOFade(1,duration);
+        });
+        
     }
 }
