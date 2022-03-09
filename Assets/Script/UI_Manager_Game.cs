@@ -25,6 +25,7 @@ public class UI_Manager_Game : MonoBehaviour
     [SerializeField] GameObject gameOver;
     [SerializeField] GameObject result;
     [SerializeField] TextMeshProUGUI countDown;
+    [SerializeField] TextMeshProUGUI resultValue;
     [SerializeField] weaponFire fire;
     
     CanvasGroup gameStartPanel;
@@ -183,5 +184,18 @@ public class UI_Manager_Game : MonoBehaviour
 
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void OnResult()
+    {
+        gameOver.SetActive(false);
+        gameStart.SetActive(false);
+        pause.SetActive(false);
+        option.SetActive(false);
+        input.SwitchCurrentActionMap("UI");
+
+        resultValue.text = $"Time: {hour.ToString("D2")} : {min.ToString("D2")} : {sec.ToString("F2")}\nEnegyCore: {GameManager.Instance.dropItemSize}\nKill: Not supported.";
+        result.SetActive(true);
+        resultPanel.DOFade(1,duration);
     }
 }

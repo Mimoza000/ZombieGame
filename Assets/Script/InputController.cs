@@ -61,7 +61,8 @@ public class InputController : MonoBehaviour
 
     void OnFireMode(InputAction.CallbackContext obj)
     {
-        gun.enableSemiAuto = !gun.enableSemiAuto;
+        Debug.Log("Experimental: Fire mode to FULLAUTO is not supported");
+        // gun.enableSemiAuto = !gun.enableSemiAuto;
     }
 
     void OnAim(InputAction.CallbackContext obj)

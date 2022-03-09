@@ -18,13 +18,13 @@ public class weaponFire : MonoBehaviour
     public RaycastHit hitInfo_0;
     public RaycastHit hitInfo_1;
     [Header("Value")]
-    public int ammo = 0;
+    [HideInInspector] public int ammo = 0;
     public int maxAmmo = 20;
     
     [Tooltip("100%")]
-    float fireRate = 0.1f;
+    [SerializeField] float fireRate;
     [SerializeField] float fireRecoil = 0;
-    public bool enableSemiAuto = false;
+    public bool enableSemiAuto = true;
     [SerializeField] int damage = 1;
     [SerializeField] AudioClip clip;
     [SerializeField] AudioSource fire;
@@ -36,11 +36,10 @@ public class weaponFire : MonoBehaviour
     {
         ammo = maxAmmo;
         nowReloadTime = 0;
-        // crosshair.Damaged// crosshair(true,0,true);
-        /*line = GetComponent<LineRenderer>();*/
+        
     }
 
-    public void Fire(bool trigger)
+    public async void Fire(bool trigger)
     {
         
         isShooting = trigger;
@@ -52,10 +51,7 @@ public class weaponFire : MonoBehaviour
 
     void Update()
     {
-        if (isShooting && !enableSemiAuto)
-        {
-            Shot();
-        }
+        
 
         if (nowReloading) 
         {
@@ -89,7 +85,7 @@ public class weaponFire : MonoBehaviour
         }
     }
 
-    async void Shot()
+    void Shot()
     {
         // Reload Check
         if (ammo <= 0 && !nowReloading) ReloadStart();
@@ -99,7 +95,6 @@ public class weaponFire : MonoBehaviour
         muzzleFlash.Play();
         fire.PlayOneShot(clip);
         
-        await UniTask.Delay((int)fireRate * 1000);
         if (hitInfo_1.collider.CompareTag("Enemy")) enemy = hitInfo_1.collider.GetComponentInParent<enemySystem>();
         if (enemy != null && !enemy.animator.GetBool("dead"))
         {

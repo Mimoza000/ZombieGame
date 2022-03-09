@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1507ebb80cb05c04da00ead06e542518, type: 3}
   m_Name: ZombieSpawnData - High
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 59042136221837353, guid: 4459b6d31039579439e2ffb1bb914cf5, type: 3}
+  enemyPrefab: {fileID: 1558692747505101330, guid: 3b8bdaa1c7977c4499a5b0fd81cd38d7, type: 3}
   spawnSize: 9
