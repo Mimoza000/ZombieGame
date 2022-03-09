@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class playerDamage : MonoBehaviour
@@ -16,7 +14,7 @@ public class playerDamage : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("AttackField"))
+        if (other.CompareTag("Enemy"))
         {
             enemy = other.GetComponentInParent<enemySystem>();
             InvokeRepeating("PlayerHP",damageStartTime,damageRate);
