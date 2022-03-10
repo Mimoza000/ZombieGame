@@ -4,13 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Floor
-  - Wall
-  - OuterCorner
-  - Room
   - Enemy
   - Weapon
-  - AttackField
+  - Chestbox
   layers:
   - Default
   - TransparentFX

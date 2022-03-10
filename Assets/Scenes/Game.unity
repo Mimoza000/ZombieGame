@@ -198,7 +198,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &51266322
 RectTransform:
   m_ObjectHideFlags: 0
@@ -367,6 +367,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1410163989}
     m_Modifications:
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: excute
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: ammo
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ca345a7749a6314ca1d74de86ada866, type: 2}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: bandage
+      value: 
+      objectReference: {fileID: 11400000, guid: 2babd7bc1cebe9e4cab95345adbb605d, type: 2}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: enegyCore
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c24142524b530a4a98c297e6673a5ed, type: 2}
     - target: {fileID: 5762021949185207046, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -431,7 +455,8 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
 --- !u!4 &84577826 stripped
 Transform:
@@ -469,10 +494,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6841314220725888519}
     m_Modifications:
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: excute
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: ammo
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ca345a7749a6314ca1d74de86ada866, type: 2}
     - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: bandage
+      value: 
+      objectReference: {fileID: 11400000, guid: 2babd7bc1cebe9e4cab95345adbb605d, type: 2}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: enegyCore
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c24142524b530a4a98c297e6673a5ed, type: 2}
     - target: {fileID: 5762021949185207046, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -525,7 +570,8 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
 --- !u!4 &104858310 stripped
 Transform:
@@ -707,10 +753,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6841314220725888519}
     m_Modifications:
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: excute
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: ammo
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ca345a7749a6314ca1d74de86ada866, type: 2}
     - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: bandage
+      value: 
+      objectReference: {fileID: 11400000, guid: 2babd7bc1cebe9e4cab95345adbb605d, type: 2}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: enegyCore
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c24142524b530a4a98c297e6673a5ed, type: 2}
     - target: {fileID: 5762021949185207046, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -763,7 +829,8 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
 --- !u!4 &113194089 stripped
 Transform:
@@ -1480,10 +1547,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6841314220725888519}
     m_Modifications:
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: excute
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: ammo
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ca345a7749a6314ca1d74de86ada866, type: 2}
     - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: bandage
+      value: 
+      objectReference: {fileID: 11400000, guid: 2babd7bc1cebe9e4cab95345adbb605d, type: 2}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: enegyCore
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c24142524b530a4a98c297e6673a5ed, type: 2}
     - target: {fileID: 5762021949185207046, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1536,7 +1623,8 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
 --- !u!4 &189243370 stripped
 Transform:
@@ -1952,7 +2040,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: E (TMP)
+  m_text: Press E
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2074,10 +2162,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6841314220725888519}
     m_Modifications:
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: excute
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: ammo
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ca345a7749a6314ca1d74de86ada866, type: 2}
     - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: bandage
+      value: 
+      objectReference: {fileID: 11400000, guid: 2babd7bc1cebe9e4cab95345adbb605d, type: 2}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: enegyCore
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c24142524b530a4a98c297e6673a5ed, type: 2}
     - target: {fileID: 5762021949185207046, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -2130,7 +2238,8 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
 --- !u!4 &280985868 stripped
 Transform:
@@ -2303,8 +2412,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6841314220725888519}
     m_Modifications:
-    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: canvas
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: excute
       value: 
       objectReference: {fileID: 270404605}
     - target: {fileID: 5762021949185207046, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
@@ -2355,10 +2468,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChestBox2
       objectReference: {fileID: 0}
-    - target: {fileID: 6292952467162086540, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
-      propertyPath: canvas
-      value: 
-      objectReference: {fileID: 270404605}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
 --- !u!4 &307280180 stripped
@@ -3314,10 +3423,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6841314220725888519}
     m_Modifications:
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: excute
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: ammo
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ca345a7749a6314ca1d74de86ada866, type: 2}
     - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: bandage
+      value: 
+      objectReference: {fileID: 11400000, guid: 2babd7bc1cebe9e4cab95345adbb605d, type: 2}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: enegyCore
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c24142524b530a4a98c297e6673a5ed, type: 2}
     - target: {fileID: 5762021949185207046, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -3370,7 +3499,8 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
 --- !u!4 &372108558 stripped
 Transform:
@@ -3875,10 +4005,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6841314220725888519}
     m_Modifications:
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: excute
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: ammo
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ca345a7749a6314ca1d74de86ada866, type: 2}
     - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: bandage
+      value: 
+      objectReference: {fileID: 11400000, guid: 2babd7bc1cebe9e4cab95345adbb605d, type: 2}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: enegyCore
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c24142524b530a4a98c297e6673a5ed, type: 2}
     - target: {fileID: 5762021949185207046, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: m_RootOrder
       value: 18
@@ -3931,7 +4081,8 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
 --- !u!4 &428667184 stripped
 Transform:
@@ -5737,10 +5888,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6841314220725888519}
     m_Modifications:
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: excute
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: ammo
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ca345a7749a6314ca1d74de86ada866, type: 2}
     - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: bandage
+      value: 
+      objectReference: {fileID: 11400000, guid: 2babd7bc1cebe9e4cab95345adbb605d, type: 2}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: enegyCore
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c24142524b530a4a98c297e6673a5ed, type: 2}
     - target: {fileID: 5762021949185207046, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -5793,7 +5964,8 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
 --- !u!4 &607641347 stripped
 Transform:
@@ -6320,6 +6492,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1410163989}
     m_Modifications:
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: excute
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: ammo
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ca345a7749a6314ca1d74de86ada866, type: 2}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: bandage
+      value: 
+      objectReference: {fileID: 11400000, guid: 2babd7bc1cebe9e4cab95345adbb605d, type: 2}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: enegyCore
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c24142524b530a4a98c297e6673a5ed, type: 2}
     - target: {fileID: 5762021949185207046, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -6384,7 +6580,8 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
 --- !u!4 &680936506 stripped
 Transform:
@@ -6594,8 +6791,8 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6841314220725888519}
     m_Modifications:
-    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
-      propertyPath: canvas
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: excute
       value: 
       objectReference: {fileID: 270404605}
     - target: {fileID: 5762021949185207046, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
@@ -6646,10 +6843,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChestBox15
       objectReference: {fileID: 0}
-    - target: {fileID: 6292952467162086540, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
-      propertyPath: canvas
-      value: 
-      objectReference: {fileID: 270404605}
+    - target: {fileID: 6292952467126417643, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6292952467126417643, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6292952467126417643, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6292952467126417643, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6292952467126417643, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6292952467126417643, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6292952467126417643, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
 --- !u!4 &721165578 stripped
@@ -6666,7 +6887,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 730879399}
-  - component: {fileID: 730879401}
   - component: {fileID: 730879400}
   m_Layer: 0
   m_Name: Guidance
@@ -6702,21 +6922,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10, y: 8, z: 6}
   m_Center: {x: 0, y: 4, z: 0}
---- !u!114 &730879401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 730879398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f88f460628edcf949a19533accf0b25d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  duration: 0.2
-  canvas: {fileID: 1219291957}
-  items: []
 --- !u!4 &756675435 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9f2991a21c7fb8a49a4d856161213d22, type: 3}
@@ -7270,10 +7475,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6841314220725888519}
     m_Modifications:
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: excute
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: ammo
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ca345a7749a6314ca1d74de86ada866, type: 2}
     - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: bandage
+      value: 
+      objectReference: {fileID: 11400000, guid: 2babd7bc1cebe9e4cab95345adbb605d, type: 2}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: enegyCore
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c24142524b530a4a98c297e6673a5ed, type: 2}
     - target: {fileID: 5762021949185207046, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: m_RootOrder
       value: 19
@@ -7326,7 +7551,8 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
 --- !u!4 &814672266 stripped
 Transform:
@@ -7637,10 +7863,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6841314220725888519}
     m_Modifications:
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: excute
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: ammo
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ca345a7749a6314ca1d74de86ada866, type: 2}
     - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: bandage
+      value: 
+      objectReference: {fileID: 11400000, guid: 2babd7bc1cebe9e4cab95345adbb605d, type: 2}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: enegyCore
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c24142524b530a4a98c297e6673a5ed, type: 2}
     - target: {fileID: 5762021949185207046, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -7693,7 +7939,8 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
 --- !u!4 &879080405 stripped
 Transform:
@@ -7990,7 +8237,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2205741956616589621, guid: 838dc43df4fc5b64698f80d89f4483b9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -34
+      value: 5.25
       objectReference: {fileID: 0}
     - target: {fileID: 2205741956616589621, guid: 838dc43df4fc5b64698f80d89f4483b9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7998,7 +8245,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2205741956616589621, guid: 838dc43df4fc5b64698f80d89f4483b9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -20.25
+      value: -43
       objectReference: {fileID: 0}
     - target: {fileID: 2205741956616589621, guid: 838dc43df4fc5b64698f80d89f4483b9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8993,6 +9240,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7443670039075835265, guid: 8565827ba0e77064eab933a83d6aaf4e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7443670039075835265, guid: 8565827ba0e77064eab933a83d6aaf4e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -9957,10 +10208,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6841314220725888519}
     m_Modifications:
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: excute
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: ammo
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ca345a7749a6314ca1d74de86ada866, type: 2}
     - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: bandage
+      value: 
+      objectReference: {fileID: 11400000, guid: 2babd7bc1cebe9e4cab95345adbb605d, type: 2}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: enegyCore
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c24142524b530a4a98c297e6673a5ed, type: 2}
     - target: {fileID: 5762021949185207046, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -10013,7 +10284,8 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
 --- !u!4 &1148626490 stripped
 Transform:
@@ -10655,7 +10927,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1211264890
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11456,7 +11728,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHP: 0
-  maxHP: 5
+  maxHP: 500
   startTimer: 0
   dropItemSize: 0
 --- !u!4 &1308887317
@@ -11650,10 +11922,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6841314220725888519}
     m_Modifications:
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: excute
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: ammo
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ca345a7749a6314ca1d74de86ada866, type: 2}
     - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: bandage
+      value: 
+      objectReference: {fileID: 11400000, guid: 2babd7bc1cebe9e4cab95345adbb605d, type: 2}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: enegyCore
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c24142524b530a4a98c297e6673a5ed, type: 2}
     - target: {fileID: 5762021949185207046, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -11706,7 +11998,8 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
 --- !u!4 &1350692965 stripped
 Transform:
@@ -12358,10 +12651,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6841314220725888519}
     m_Modifications:
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: excute
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: ammo
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ca345a7749a6314ca1d74de86ada866, type: 2}
     - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: bandage
+      value: 
+      objectReference: {fileID: 11400000, guid: 2babd7bc1cebe9e4cab95345adbb605d, type: 2}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: enegyCore
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c24142524b530a4a98c297e6673a5ed, type: 2}
     - target: {fileID: 5762021949185207046, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -12414,7 +12727,8 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
 --- !u!4 &1485004155 stripped
 Transform:
@@ -13831,10 +14145,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6841314220725888519}
     m_Modifications:
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: excute
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: ammo
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ca345a7749a6314ca1d74de86ada866, type: 2}
     - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: bandage
+      value: 
+      objectReference: {fileID: 11400000, guid: 2babd7bc1cebe9e4cab95345adbb605d, type: 2}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: enegyCore
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c24142524b530a4a98c297e6673a5ed, type: 2}
     - target: {fileID: 5762021949185207046, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -13887,7 +14221,8 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
 --- !u!4 &1699650051 stripped
 Transform:
@@ -13901,10 +14236,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6841314220725888519}
     m_Modifications:
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: excute
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: ammo
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ca345a7749a6314ca1d74de86ada866, type: 2}
     - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: bandage
+      value: 
+      objectReference: {fileID: 11400000, guid: 2babd7bc1cebe9e4cab95345adbb605d, type: 2}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: enegyCore
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c24142524b530a4a98c297e6673a5ed, type: 2}
     - target: {fileID: 5762021949185207046, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -13957,7 +14312,8 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
 --- !u!4 &1714850235 stripped
 Transform:
@@ -14061,10 +14417,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6841314220725888519}
     m_Modifications:
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: excute
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: ammo
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ca345a7749a6314ca1d74de86ada866, type: 2}
     - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: bandage
+      value: 
+      objectReference: {fileID: 11400000, guid: 2babd7bc1cebe9e4cab95345adbb605d, type: 2}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: enegyCore
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c24142524b530a4a98c297e6673a5ed, type: 2}
     - target: {fileID: 5762021949185207046, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -14117,7 +14493,8 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
 --- !u!4 &1729500804 stripped
 Transform:
@@ -14282,10 +14659,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6841314220725888519}
     m_Modifications:
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: excute
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: ammo
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ca345a7749a6314ca1d74de86ada866, type: 2}
     - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: bandage
+      value: 
+      objectReference: {fileID: 11400000, guid: 2babd7bc1cebe9e4cab95345adbb605d, type: 2}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: enegyCore
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c24142524b530a4a98c297e6673a5ed, type: 2}
     - target: {fileID: 5762021949185207046, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -14338,7 +14735,8 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
 --- !u!4 &1800236065 stripped
 Transform:
@@ -15429,10 +15827,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6841314220725888519}
     m_Modifications:
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: excute
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: ammo
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ca345a7749a6314ca1d74de86ada866, type: 2}
     - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: bandage
+      value: 
+      objectReference: {fileID: 11400000, guid: 2babd7bc1cebe9e4cab95345adbb605d, type: 2}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: enegyCore
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c24142524b530a4a98c297e6673a5ed, type: 2}
     - target: {fileID: 5762021949185207046, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -15485,7 +15903,8 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
 --- !u!4 &2019916137 stripped
 Transform:
@@ -15717,10 +16136,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6841314220725888519}
     m_Modifications:
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: excute
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: ammo
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ca345a7749a6314ca1d74de86ada866, type: 2}
     - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: bandage
+      value: 
+      objectReference: {fileID: 11400000, guid: 2babd7bc1cebe9e4cab95345adbb605d, type: 2}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: enegyCore
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c24142524b530a4a98c297e6673a5ed, type: 2}
     - target: {fileID: 5762021949185207046, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -15773,7 +16212,8 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
 --- !u!4 &2094696661 stripped
 Transform:
@@ -17403,6 +17843,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1410163989}
     m_Modifications:
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 621435417959392302, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: excute
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: ammo
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ca345a7749a6314ca1d74de86ada866, type: 2}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 270404605}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: bandage
+      value: 
+      objectReference: {fileID: 11400000, guid: 2babd7bc1cebe9e4cab95345adbb605d, type: 2}
+    - target: {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
+      propertyPath: enegyCore
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c24142524b530a4a98c297e6673a5ed, type: 2}
     - target: {fileID: 5762021949185207046, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -17467,7 +17931,8 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 270404605}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2066051500021842959, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 76dcf33dab9b24d43952f48e68387080, type: 3}
 --- !u!4 &6292952466350485131 stripped
 Transform:

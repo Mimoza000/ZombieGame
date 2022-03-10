@@ -4,27 +4,25 @@ using DG.Tweening;
 public class chestboxController : MonoBehaviour
 {
     [SerializeField] float duration = 0.4f;
-    [SerializeField] CanvasGroup canvas;
-    [SerializeField] itemStatus ammo;
-    [SerializeField] itemStatus bandage;
-    [SerializeField] itemStatus enegyCore;
+    [SerializeField] CanvasGroup excute;
+    [SerializeField] GameObject ammoPrefab;
+    [SerializeField] GameObject bandagePrefab;
+    [SerializeField] GameObject enegyCorePrefab;
+    [SerializeField] GameObject chestboxTop;
     Animator animator;
-    bool canOpen;
+    float openDuration = 2;
     AnimatorStateInfo animationInfo;
     
     void Start()
     {
-        canvas.alpha = 0;
-        animator = GetComponent<Animator>();
-        animationInfo = animator.GetCurrentAnimatorStateInfo(0);
-        canOpen = false;
+        excute.alpha = 0;
     }
+
     void OnTriggerEnter(Collider collider)
     {
         if (collider.CompareTag("Player"))
         {
-            canvas.DOFade(1,duration);
-            canOpen = true;
+            excute.DOFade(1,duration);
         }
     }
 
@@ -32,19 +30,18 @@ public class chestboxController : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            canvas.DOFade(0,duration);
-            canOpen = false;
+            excute.DOFade(0,duration);
+            chestboxTop.transform.DORotate(new Vector3(0,180,0),openDuration);
         }
     }
 
     public void Open()
-    {
-        if (canOpen) animator.SetTrigger("open");
-    }
-
-    public void ChestOpened()
-    {
-        Instantiate(RandomPicker,)
+    {  
+        chestboxTop.transform.DORotate(new Vector3(0,180,-80),openDuration)
+        .OnComplete(() => 
+        {
+            Instantiate(RandomPicker(),Vector3.up + gameObject.transform.position,Quaternion.identity);
+        });
     }
 
     GameObject RandomPicker()
@@ -53,14 +50,13 @@ public class chestboxController : MonoBehaviour
         switch (randomValue)
         {
             case 0:
-                return ammo.gameObject;
+                return ammoPrefab;
             case 1:
-                return bandage.gameObject;
+                return bandagePrefab;
             case 2:
-                return enegyCore.gameObject;
+                return enegyCorePrefab;
             default:
-                Debug.LogWarning("Can NOT pick ID");
-                return null;
+                return ammoPrefab;
         }
     }
 }

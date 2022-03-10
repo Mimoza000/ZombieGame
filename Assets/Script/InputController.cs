@@ -49,7 +49,11 @@ public class InputController : MonoBehaviour
 
     void OnExcute(InputAction.CallbackContext obj)
     {
-
+        if (gun.hitInfo_0.collider.CompareTag("Chestbox"))
+        {
+            var chestbox = gun.hitInfo_0.collider.GetComponent<chestboxController>();
+            if (chestbox != null) chestbox.Open();
+        }
     }
 
     void OnGame(InputAction.CallbackContext obj)
