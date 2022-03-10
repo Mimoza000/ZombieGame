@@ -7696,7 +7696,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2846132566190004800, guid: 838dc43df4fc5b64698f80d89f4483b9, type: 3}
       propertyPath: fireRate
-      value: 1
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 2846132566190004800, guid: 838dc43df4fc5b64698f80d89f4483b9, type: 3}
       propertyPath: crosshair
@@ -7704,7 +7704,7 @@ PrefabInstance:
       objectReference: {fileID: 2027786549}
     - target: {fileID: 2846132566190004800, guid: 838dc43df4fc5b64698f80d89f4483b9, type: 3}
       propertyPath: enableSemiAuto
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3479835100850739336, guid: 838dc43df4fc5b64698f80d89f4483b9, type: 3}
       propertyPath: m_UIInputModule

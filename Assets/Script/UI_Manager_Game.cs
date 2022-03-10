@@ -95,9 +95,7 @@ public class UI_Manager_Game : MonoBehaviour
     }
 
     private void Update()
-    {
-        Debug.Log(hitCrosshair.color.a);
-        
+    {   
         playerHP_Bar.value = GameManager.Instance.playerHP;
         playerHP.text = $"{GameManager.Instance.playerHP.ToString()} / {GameManager.Instance.maxHP.ToString()}";
         Ammo.text = $"Ammo: {fire.ammo.ToString()}/{fire.maxAmmo.ToString()}";
@@ -121,7 +119,7 @@ public class UI_Manager_Game : MonoBehaviour
         else crosshair.DOFade(0,duration);
     }
 
-    public void HitCrossHairFade(bool IN,bool enableSemiAuto,float duration,RaycastHit hitInfo)
+    public void HitCrossHairFade(bool IN,bool enableSemiAuto,float duration)
     {
         if (IN) hitCrosshair.DOFade(1,duration)
         .OnComplete(() => 

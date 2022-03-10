@@ -1,5 +1,6 @@
 using UnityEngine;
 using Cysharp.Threading.Tasks;
+using System.Threading;
 
 public class weaponFire : MonoBehaviour
 {
@@ -8,8 +9,6 @@ public class weaponFire : MonoBehaviour
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] TrailRenderer tracerEffect;
     [SerializeField] UI_Manager_Game crosshair;
-    [Header("Debug")]
-    bool isShooting;
     float reloadingTime = 3.3f;
     public float nowReloadTime;
     bool nowReloading;
@@ -29,39 +28,60 @@ public class weaponFire : MonoBehaviour
     [SerializeField] AudioClip clip;
     [SerializeField] AudioSource fire;
     enemySystem enemy;
+    CancellationTokenSource cts;
     float duration = 0.5f;
+    bool canShoot;
+    float nowShootTime = 0;
     /*LineRenderer line;*/
 
     void Start()
     {
         ammo = maxAmmo;
         nowReloadTime = 0;
-        
+        // CancellationTokenの発行
+        // cts = new CancellationTokenSource();
     }
 
-    public async void Fire(bool trigger)
-    {
-        
-        isShooting = trigger;
-        if (enableSemiAuto && !trigger) return;
-        if (enableSemiAuto) Shot();
-        
-        //if (GameManager.Instance.fire == 0) // crosshair.Damaged// crosshair(false, damaged// crosshairTime);
+    public void Fire(bool trigger)
+    {    
+        if (enableSemiAuto)    
+        {
+            if (!trigger) return;
+            Shot();
+        }
+        else
+        {
+            if (!trigger) 
+            {
+                canShoot = false;
+                nowShootTime = 0;
+                return;
+            }
+            Shot();
+            canShoot = true;
+        }
     }
 
     void Update()
     {
-        
-
         if (nowReloading) 
         {
             nowReloadTime += Time.deltaTime;
         }
         else nowReloadTime = 0;
 
-        if (enemy != null && !enableSemiAuto)
+        if (!enableSemiAuto && canShoot) 
+        {
+            nowShootTime += Time.deltaTime;
+            if (nowShootTime >= fireRate) 
+            {
+                Shot();
+                nowShootTime = 0;
+            }
+        }
+        if (!hitInfo_1.collider.CompareTag("Enemy") && !enableSemiAuto)
         {   
-            crosshair.HitCrossHairFade(false,false,duration,hitInfo_1);
+            crosshair.HitCrossHairFade(false,false,duration);
         }
     }
 
@@ -91,15 +111,17 @@ public class weaponFire : MonoBehaviour
         if (ammo <= 0 && !nowReloading) ReloadStart();
         if (nowReloading) return;
 
+        // Shoot
         ammo--;
         muzzleFlash.Play();
         fire.PlayOneShot(clip);
         
+        // Check ray and get enemySystem
         if (hitInfo_1.collider.CompareTag("Enemy")) enemy = hitInfo_1.collider.GetComponentInParent<enemySystem>();
         if (enemy != null && !enemy.animator.GetBool("dead"))
         {
             enemy.Damaged(damage);
-            crosshair.HitCrossHairFade(true,enableSemiAuto,duration,hitInfo_1);
+            crosshair.HitCrossHairFade(true,enableSemiAuto,duration);
         }
     }
 

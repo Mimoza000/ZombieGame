@@ -32,8 +32,6 @@ public class InputController : MonoBehaviour
         input.actions["Fire"].canceled += OnFireCanceled;
     }
 
-
-
     void OnDisable()
     {
         input.actions["Reload"].started -= OnReload;
@@ -61,8 +59,8 @@ public class InputController : MonoBehaviour
 
     void OnFireMode(InputAction.CallbackContext obj)
     {
-        Debug.Log("Experimental: Fire mode to FULLAUTO is not supported");
-        // gun.enableSemiAuto = !gun.enableSemiAuto;
+        Debug.LogWarning("Experimental: Fire mode to FULLAUTO is not supported");
+        gun.enableSemiAuto = !gun.enableSemiAuto;
     }
 
     void OnAim(InputAction.CallbackContext obj)
