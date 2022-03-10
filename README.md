@@ -22,7 +22,7 @@ Open ChestBox = E
 
 [Experimental]  Inventory = I
 
-Pause = G
+Pause = ESC
 
 ## Assets
 
