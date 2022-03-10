@@ -1,14 +1,11 @@
 using UnityEngine;
 using Cysharp.Threading.Tasks;
-using System.Threading;
-
 public class weaponFire : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] Transform muzzle;
     [SerializeField] ParticleSystem muzzleFlash;
-    [SerializeField] TrailRenderer tracerEffect;
-    [SerializeField] UI_Manager_Game crosshair;
+    [SerializeField] UIManager_Game crosshair;
     float reloadingTime = 3.3f;
     public float nowReloadTime;
     bool nowReloading;
@@ -28,7 +25,6 @@ public class weaponFire : MonoBehaviour
     [SerializeField] AudioClip clip;
     [SerializeField] AudioSource fire;
     enemySystem enemy;
-    CancellationTokenSource cts;
     float duration = 0.5f;
     bool canShoot;
     float nowShootTime = 0;

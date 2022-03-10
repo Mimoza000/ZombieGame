@@ -55,7 +55,9 @@ public class playerMove : MonoBehaviour
 
     public void Sprint(bool Trigger)
     {
+        // if playerHP is less than half => CAN NOT SPRINT
         if (GameManager.Instance.playerHP <= GameManager.Instance.playerHP / 2) return;
+        
         if (Trigger) playerSpeed = sprintSpeed;
         else playerSpeed = walkSpeed;
     }

@@ -4264,7 +4264,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Count Down
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7644,7 +7644,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2205741956616589621, guid: 838dc43df4fc5b64698f80d89f4483b9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -34
       objectReference: {fileID: 0}
     - target: {fileID: 2205741956616589621, guid: 838dc43df4fc5b64698f80d89f4483b9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7652,7 +7652,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2205741956616589621, guid: 838dc43df4fc5b64698f80d89f4483b9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -20.25
       objectReference: {fileID: 0}
     - target: {fileID: 2205741956616589621, guid: 838dc43df4fc5b64698f80d89f4483b9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11016,20 +11016,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57ccb249a8c1f6e41977a43aa10cb96f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vertical: 0
-  horizotal: 0
-  sprint: 0
-  jump: 0
-  mouseX: 0
-  mouseY: 0
-  aim: 0
-  fire: 0
-  reload: 0
-  excute: 0
-  inventory: 0
-  menu: 0
   playerHP: 0
-  maxHP: 100
+  maxHP: 5
   startTimer: 0
   dropItemSize: 0
 --- !u!4 &1308887317

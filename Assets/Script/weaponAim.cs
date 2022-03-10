@@ -4,7 +4,7 @@ using DG.Tweening;
 public class weaponAim : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] UI_Manager_Game crosshair;
+    [SerializeField] UIManager_Game crosshair;
     [Header("Value")]
     public Transform aimPoint;
     float aimingTime = 1;

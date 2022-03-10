@@ -7,7 +7,11 @@ public class playerDamage : MonoBehaviour
     enemySystem enemy;
     void Update()
     {
-        
+        if (GameManager.Instance.playerHP <= 0) 
+        {
+            CancelInvoke("PlayerHP");
+            GameManager.Instance.playerHP = 0;
+        }
         if (enemy != null) 
         {
             if (enemy.animator.GetBool("dead")) CancelInvoke("PlayerHP");

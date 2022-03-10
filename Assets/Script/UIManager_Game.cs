@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using Cysharp.Threading.Tasks;
 using UnityEngine.InputSystem;
 
-public class UI_Manager_Game : MonoBehaviour
+public class UIManager_Game : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] PlayerInput input;
@@ -64,17 +64,15 @@ public class UI_Manager_Game : MonoBehaviour
         result.SetActive(false);
         gameOver.SetActive(false);
         gameStart.SetActive(false);
+        gameStart.SetActive(true);
+        gameStartPanel.alpha = 1;
 
+        input.SwitchCurrentActionMap("UI");
         playerHP_Bar.maxValue = GameManager.Instance.maxHP;
     }
 
     async void Start()
     {
-        input.SwitchCurrentActionMap("UI");
-
-        gameStart.SetActive(true);
-        gameStartPanel.alpha = 1;
-
         await UniTask.Delay(1000);
         countDown.text = "3";
 
@@ -111,6 +109,8 @@ public class UI_Manager_Game : MonoBehaviour
             hour = (int)time / 60 / 60;
         }
         timer.text = $"{hour.ToString("D2")} : {min.ToString("D2")} : {sec.ToString("F2")}";
+
+        if (GameManager.Instance.playerHP <= 0) OnGameOver();
     }
 
     public void CrossHairFade(bool IN,float duration)
@@ -128,13 +128,6 @@ public class UI_Manager_Game : MonoBehaviour
         });
         else hitCrosshair.DOFade(0,duration);
     }
-
-    public bool HitCrossHairAlphaCheck(float value)
-    {
-        if (hitCrosshair.color.a == value) return true;
-        else return false;
-    }
-    
 
     public void LoadLobby()
     {
@@ -195,5 +188,21 @@ public class UI_Manager_Game : MonoBehaviour
         resultValue.text = $"Time: {hour.ToString("D2")} : {min.ToString("D2")} : {sec.ToString("F2")}\nEnegyCore: {GameManager.Instance.dropItemSize}\nKill: Not supported.";
         result.SetActive(true);
         resultPanel.DOFade(1,duration);
+    }
+
+    void OnGameOver()
+    {
+        gameStart.SetActive(false);
+        pause.SetActive(false);
+        option.SetActive(false);
+        result.SetActive(false);
+        input.SwitchCurrentActionMap("UI");
+        GameManager.Instance.startTimer = false;
+
+        gameOver.SetActive(true);
+        gameOverPanel.DOFade(1,duration);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        GameManager.Instance.startTimer = false;
     }
 }

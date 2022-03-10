@@ -8,7 +8,7 @@ public class InputController : MonoBehaviour
     [SerializeField] weaponFire gun;
     [SerializeField] weaponAim aim;
     [SerializeField] PlayerInput input;
-    [SerializeField] UI_Manager_Game UI;
+    [SerializeField] UIManager_Game UI;
 
     void Update()
     {
@@ -59,7 +59,6 @@ public class InputController : MonoBehaviour
 
     void OnFireMode(InputAction.CallbackContext obj)
     {
-        Debug.LogWarning("Experimental: Fire mode to FULLAUTO is not supported");
         gun.enableSemiAuto = !gun.enableSemiAuto;
     }
 

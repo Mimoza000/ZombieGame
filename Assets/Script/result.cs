@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class result : MonoBehaviour
 {
-    [SerializeField] UI_Manager_Game UI;
+    [SerializeField] UIManager_Game UI;
 
     void OnTriggerEnter(Collider collider)
     {
