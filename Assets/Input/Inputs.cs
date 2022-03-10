@@ -91,7 +91,7 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Execute"",
+                    ""name"": ""Excute"",
                     ""type"": ""Button"",
                     ""id"": ""f9ef50cd-d527-4c6a-b21c-62033f89eedb"",
                     ""expectedControlType"": ""Button"",
@@ -256,7 +256,7 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardMouse"",
-                    ""action"": ""Execute"",
+                    ""action"": ""Excute"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -860,7 +860,7 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
         m_Game_Aim = m_Game.FindAction("Aim", throwIfNotFound: true);
         m_Game_Fire = m_Game.FindAction("Fire", throwIfNotFound: true);
         m_Game_Reload = m_Game.FindAction("Reload", throwIfNotFound: true);
-        m_Game_Execute = m_Game.FindAction("Execute", throwIfNotFound: true);
+        m_Game_Excute = m_Game.FindAction("Excute", throwIfNotFound: true);
         m_Game_Inventory = m_Game.FindAction("Inventory", throwIfNotFound: true);
         m_Game_Pause = m_Game.FindAction("Pause", throwIfNotFound: true);
         m_Game_FireMode = m_Game.FindAction("FireMode", throwIfNotFound: true);
@@ -943,7 +943,7 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
     private readonly InputAction m_Game_Aim;
     private readonly InputAction m_Game_Fire;
     private readonly InputAction m_Game_Reload;
-    private readonly InputAction m_Game_Execute;
+    private readonly InputAction m_Game_Excute;
     private readonly InputAction m_Game_Inventory;
     private readonly InputAction m_Game_Pause;
     private readonly InputAction m_Game_FireMode;
@@ -958,7 +958,7 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
         public InputAction @Aim => m_Wrapper.m_Game_Aim;
         public InputAction @Fire => m_Wrapper.m_Game_Fire;
         public InputAction @Reload => m_Wrapper.m_Game_Reload;
-        public InputAction @Execute => m_Wrapper.m_Game_Execute;
+        public InputAction @Excute => m_Wrapper.m_Game_Excute;
         public InputAction @Inventory => m_Wrapper.m_Game_Inventory;
         public InputAction @Pause => m_Wrapper.m_Game_Pause;
         public InputAction @FireMode => m_Wrapper.m_Game_FireMode;
@@ -992,9 +992,9 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                 @Reload.started -= m_Wrapper.m_GameActionsCallbackInterface.OnReload;
                 @Reload.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnReload;
                 @Reload.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnReload;
-                @Execute.started -= m_Wrapper.m_GameActionsCallbackInterface.OnExecute;
-                @Execute.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnExecute;
-                @Execute.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnExecute;
+                @Excute.started -= m_Wrapper.m_GameActionsCallbackInterface.OnExcute;
+                @Excute.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnExcute;
+                @Excute.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnExcute;
                 @Inventory.started -= m_Wrapper.m_GameActionsCallbackInterface.OnInventory;
                 @Inventory.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnInventory;
                 @Inventory.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnInventory;
@@ -1029,9 +1029,9 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                 @Reload.started += instance.OnReload;
                 @Reload.performed += instance.OnReload;
                 @Reload.canceled += instance.OnReload;
-                @Execute.started += instance.OnExecute;
-                @Execute.performed += instance.OnExecute;
-                @Execute.canceled += instance.OnExecute;
+                @Excute.started += instance.OnExcute;
+                @Excute.performed += instance.OnExcute;
+                @Excute.canceled += instance.OnExcute;
                 @Inventory.started += instance.OnInventory;
                 @Inventory.performed += instance.OnInventory;
                 @Inventory.canceled += instance.OnInventory;
@@ -1176,7 +1176,7 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
         void OnAim(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
-        void OnExecute(InputAction.CallbackContext context);
+        void OnExcute(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnFireMode(InputAction.CallbackContext context);

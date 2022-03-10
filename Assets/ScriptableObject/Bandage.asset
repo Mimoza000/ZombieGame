@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Bandage
   m_EditorClassIdentifier: 
   name: Bandage
-  mesh: {fileID: 0}
-  image: {fileID: 0}
-  value: 0
+  id: 1
+  gameObject: {fileID: -5282184102568954123, guid: 16fef59973a6f2a42b76ee27a2f057ed, type: 3}
+  image: {fileID: 21300000, guid: 01c7d5be957c6db4cb146efda42d8649, type: 3}
+  value: 10

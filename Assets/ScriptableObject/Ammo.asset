@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Ammo
   m_EditorClassIdentifier: 
   name: Ammo
-  mesh: {fileID: 0}
-  image: {fileID: 0}
-  value: 0
+  id: 0
+  gameObject: {fileID: 0}
+  image: {fileID: 21300000, guid: d70fad554b869a541b14f2ab68544f7d, type: 3}
+  value: 1

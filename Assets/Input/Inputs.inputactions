@@ -69,7 +69,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Execute",
+                    "name": "Excute",
                     "type": "Button",
                     "id": "f9ef50cd-d527-4c6a-b21c-62033f89eedb",
                     "expectedControlType": "Button",
@@ -234,7 +234,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
-                    "action": "Execute",
+                    "action": "Excute",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

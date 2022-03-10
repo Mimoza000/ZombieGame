@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: EnegyCore
   m_EditorClassIdentifier: 
   name: EnegyCore
-  mesh: {fileID: 0}
-  image: {fileID: 0}
-  value: 0
+  id: 2
+  gameObject: {fileID: 1077377867954447577, guid: 16fef59973a6f2a42b76ee27a2f057ed, type: 3}
+  image: {fileID: 21300000, guid: 66deb6f32991ae14ebcadf94ff126565, type: 3}
+  value: 1

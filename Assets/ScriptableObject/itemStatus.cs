@@ -6,7 +6,8 @@ using UnityEngine;
 public class itemStatus : ScriptableObject
 {
     public new string name;
-    public Mesh mesh;
+    public int id;
+    public GameObject gameObject;
     public Sprite image;
-    public int value;
+    public int effectSize;
 }

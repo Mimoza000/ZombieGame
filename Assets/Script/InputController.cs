@@ -30,6 +30,7 @@ public class InputController : MonoBehaviour
         input.actions["FireMode"].started += OnFireMode;
         input.actions["Fire"].started += OnFire;
         input.actions["Fire"].canceled += OnFireCanceled;
+        input.actions["Excute"].started += OnExcute;
     }
 
     void OnDisable()
@@ -43,6 +44,12 @@ public class InputController : MonoBehaviour
         input.actions["FireMode"].started -= OnFireMode;
         input.actions["Fire"].started -= OnFire;
         input.actions["Fire"].canceled -= OnFireCanceled;
+        input.actions["Excute"].started -= OnExcute;
+    }
+
+    void OnExcute(InputAction.CallbackContext obj)
+    {
+
     }
 
     void OnGame(InputAction.CallbackContext obj)

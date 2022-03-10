@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [HideInInspector] public static GameManager Instance;
-    [Header("PlayerDefaultData")]
     [HideInInspector] public int playerHP = 0;
     public int maxHP = 100;
     [Header("Value")]
