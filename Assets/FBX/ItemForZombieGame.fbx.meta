@@ -1,9 +1,29 @@
 fileFormatVersion: 2
-guid: 89e4e8790377c1346bf022f56c92515e
+guid: 16fef59973a6f2a42b76ee27a2f057ed
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BandageColor
+    second: {fileID: 2100000, guid: c536e3ab4db79dc47ab060e9ae2b469a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EnegyCorePurple
+    second: {fileID: 2100000, guid: 206f0b709f7230048a6a49b3915d7185, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ammoBrond
+    second: {fileID: 2100000, guid: d874df73d9320ae40ac0abe9c8df82b9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ammoGold
+    second: {fileID: 2100000, guid: f8b085f2fdec57a429b544b4229519d2, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
