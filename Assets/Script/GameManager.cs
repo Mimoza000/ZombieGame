@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public int maxHP = 100;
     [Header("Value")]
     [HideInInspector] public bool startTimer = false;
-    [HideInInspector] public int dropItemSize = 0;
+    
     void Awake()
     {
         Instance = this;

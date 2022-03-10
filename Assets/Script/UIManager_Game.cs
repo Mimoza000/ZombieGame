@@ -98,7 +98,7 @@ public class UIManager_Game : MonoBehaviour
         playerHP.text = $"{GameManager.Instance.playerHP.ToString()} / {GameManager.Instance.maxHP.ToString()}";
         Ammo.text = $"Ammo: {fire.ammo.ToString()}/{fire.maxAmmo.ToString()}";
         Reload.text = $"Reload: {fire.nowReloadTime}";
-        enegyCoreCount.text = $"EnegyCore: {GameManager.Instance.dropItemSize.ToString()}";
+        // enegyCoreCount.text = $"EnegyCore: {GameManager.Instance.dropItemSize.ToString()}";
 
         // Timer
         if (GameManager.Instance.startTimer) 
@@ -185,7 +185,7 @@ public class UIManager_Game : MonoBehaviour
         option.SetActive(false);
         input.SwitchCurrentActionMap("UI");
 
-        resultValue.text = $"Time: {hour.ToString("D2")} : {min.ToString("D2")} : {sec.ToString("F2")}\nEnegyCore: {GameManager.Instance.dropItemSize}\nKill: Not supported.";
+        resultValue.text = $"Time: {hour.ToString("D2")} : {min.ToString("D2")} : {sec.ToString("F2")}\nEnegyCoreDUMMY: {/*GameManager.Instance.dropItemSize*/1+1}\nKill: Not supported.";
         result.SetActive(true);
         resultPanel.DOFade(1,duration);
     }

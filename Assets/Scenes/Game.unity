@@ -11730,7 +11730,6 @@ MonoBehaviour:
   playerHP: 0
   maxHP: 500
   startTimer: 0
-  dropItemSize: 0
 --- !u!4 &1308887317
 Transform:
   m_ObjectHideFlags: 0

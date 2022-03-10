@@ -81,9 +81,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 0.4
   excute: {fileID: 0}
-  ammoPrefab: {fileID: 0}
-  bandagePrefab: {fileID: 0}
-  enegyCorePrefab: {fileID: 0}
+  ammoPrefab: {fileID: 6819366588330999582, guid: 59ed78e472499b24e905dd5d3f3c1398, type: 3}
+  bandagePrefab: {fileID: 4143922169422607065, guid: 12e7c1261df7b1d44bcf55a78fb97b2c, type: 3}
+  enegyCorePrefab: {fileID: 8811897234077968385, guid: 222909dc6f095854f9ff7d54b279e16c, type: 3}
   chestboxTop: {fileID: 7333447966933899727}
 --- !u!33 &6292952467162086530
 MeshFilter:
