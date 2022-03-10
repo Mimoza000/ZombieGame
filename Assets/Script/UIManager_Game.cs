@@ -85,6 +85,7 @@ public class UIManager_Game : MonoBehaviour
         await UniTask.Delay(1000);
         countDown.text = "Game Start!";
 
+        await UniTask.Delay(1000);
         gameStartPanel.DOFade(0,duration)
         .OnComplete(() => gameStart.SetActive(false));
 

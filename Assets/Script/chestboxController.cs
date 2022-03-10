@@ -30,7 +30,11 @@ public class chestboxController : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            excute.DOFade(0,duration);
+            if (excute.alpha != 0) 
+            {
+                excute.DOFade(0,duration);
+                Debug.Log("alpha is not 0");
+            }
             chestboxTop.transform.DORotate(new Vector3(0,180,0),openDuration);
         }
     }
@@ -40,6 +44,7 @@ public class chestboxController : MonoBehaviour
         chestboxTop.transform.DORotate(new Vector3(0,180,-80),openDuration)
         .OnComplete(() => 
         {
+            excute.DOFade(0,duration);
             Instantiate(RandomPicker(),Vector3.up + gameObject.transform.position,Quaternion.identity);
         });
     }

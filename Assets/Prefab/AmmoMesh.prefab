@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7081711341469018625}
   - component: {fileID: 5018063008397352651}
   - component: {fileID: 4422599422015489096}
-  - component: {fileID: 4167156870779559229}
   - component: {fileID: 4432144835549207192}
   m_Layer: 0
   m_Name: AmmoMesh
@@ -93,25 +92,11 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6819366588330999582}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 60
   m_Center: {x: 0, y: 0, z: 0}
---- !u!64 &4167156870779559229
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6819366588330999582}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -1884995911951485702, guid: 10e7122e75de5974eac35c4c5be92340, type: 3}
 --- !u!114 &4432144835549207192
 MonoBehaviour:
   m_ObjectHideFlags: 0

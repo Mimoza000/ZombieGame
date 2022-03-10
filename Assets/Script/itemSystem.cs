@@ -1,7 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
 
-public class itemDrop : MonoBehaviour
+public class itemSystem : MonoBehaviour
 {
     float duration = 1;
     Vector3 player;
@@ -9,7 +9,9 @@ public class itemDrop : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
+            player = collider.transform.position;
             transform.DOMove(player,duration)
+            .SetEase(Ease.InOutSine)
             .SetLink(this.gameObject)
             .OnComplete(() => 
             {
@@ -22,5 +24,6 @@ public class itemDrop : MonoBehaviour
     void OnTriggerStay(Collider collider)
     {
         player = collider.transform.position;
+        Debug.Log(player);
     }
 }
