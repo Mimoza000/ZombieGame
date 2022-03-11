@@ -33,15 +33,14 @@ public class chestboxController : MonoBehaviour
             if (excute.alpha != 0) 
             {
                 excute.DOFade(0,duration);
-                Debug.Log("alpha is not 0");
             }
-            chestboxTop.transform.DORotate(new Vector3(0,180,0),openDuration);
+            chestboxTop.transform.DOLocalRotate(new Vector3(0,0,0),openDuration);
         }
     }
 
     public void Open()
     {  
-        chestboxTop.transform.DORotate(new Vector3(0,180,-80),openDuration)
+        chestboxTop.transform.DOLocalRotate(new Vector3(0,0,-80),openDuration)
         .OnComplete(() => 
         {
             excute.DOFade(0,duration);

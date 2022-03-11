@@ -10,7 +10,7 @@ public class playerMove : MonoBehaviour
     [SerializeField] LayerMask groundMask;
 
     float playerSpeed;
-    float sprintSpeed = 5;
+    float sprintSpeed = 15;
     float walkSpeed = 3;
     Vector3 velocity;
     bool isGrounded;
