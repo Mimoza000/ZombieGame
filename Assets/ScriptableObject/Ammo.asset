@@ -14,6 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Ammo
   id: 0
-  gameObject: {fileID: 2232488896944177226, guid: 16fef59973a6f2a42b76ee27a2f057ed, type: 3}
   image: {fileID: 21300000, guid: d70fad554b869a541b14f2ab68544f7d, type: 3}
-  effectSize: 1
+  size: 1

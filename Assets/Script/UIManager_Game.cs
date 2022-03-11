@@ -9,9 +9,10 @@ using UnityEngine.InputSystem;
 public class UIManager_Game : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] PlayerInput input;
+    
     [SerializeField] Image crosshair;
     [SerializeField] Image hitCrosshair;
+    [SerializeField] Image itemFrame;
     [SerializeField] Slider playerHP_Bar;
     [SerializeField] TextMeshProUGUI playerHP;
     [SerializeField] TextMeshProUGUI Ammo;
@@ -24,6 +25,7 @@ public class UIManager_Game : MonoBehaviour
     [SerializeField] GameObject gameStart;
     [SerializeField] GameObject gameOver;
     [SerializeField] GameObject result;
+    [SerializeField] GameObject itemPopUp;
     [SerializeField] TextMeshProUGUI countDown;
     [SerializeField] TextMeshProUGUI resultValue;
     [SerializeField] weaponFire fire;
@@ -33,11 +35,17 @@ public class UIManager_Game : MonoBehaviour
     CanvasGroup optionPanel;
     CanvasGroup resultPanel;
     CanvasGroup gameOverPanel;
+    CanvasGroup itemPopUpPanel;
     float time = 0;
     float sec = 0;
     int min = 0;
     int hour = 0;
-
+        // pause.SetActive(false);
+        // option.SetActive(false);
+        // result.SetActive(false);
+        // gameStart.SetActvive(false);
+        // gameOver.SetActive(false);
+        // itemPopUp.SetActive(false);
     void Awake()
     {
         // Initalize
@@ -46,7 +54,8 @@ public class UIManager_Game : MonoBehaviour
         gameOverPanel = gameOver.GetComponent<CanvasGroup>();
         pausePanel = pause.GetComponent<CanvasGroup>();
         resultPanel = result.GetComponent<CanvasGroup>();
-        optionPanel =option.GetComponent<CanvasGroup>();
+        optionPanel = option.GetComponent<CanvasGroup>();
+        itemPopUpPanel = itemPopUp.GetComponent<CanvasGroup>();
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -56,6 +65,7 @@ public class UIManager_Game : MonoBehaviour
         resultPanel.alpha = 0;
         gameOverPanel.alpha = 0;
         gameStartPanel.alpha = 0;
+        itemPopUpPanel.alpha = 0;
         crosshair.color = new Color(1,1,1,1);
         hitCrosshair.color = new Color32(255,0,0,0);
 
@@ -63,11 +73,12 @@ public class UIManager_Game : MonoBehaviour
         option.SetActive(false);
         result.SetActive(false);
         gameOver.SetActive(false);
-        gameStart.SetActive(false);
-        gameStart.SetActive(true);
-        gameStartPanel.alpha = 1;
+        itemPopUp.SetActive(false);
 
-        input.SwitchCurrentActionMap("UI");
+        gameStartPanel.alpha = 1;
+        gameStart.SetActive(true);
+
+        InputController.Instance.input.SwitchCurrentActionMap("UI");
         playerHP_Bar.maxValue = GameManager.Instance.maxHP;
     }
 
@@ -89,7 +100,7 @@ public class UIManager_Game : MonoBehaviour
         gameStartPanel.DOFade(0,duration)
         .OnComplete(() => gameStart.SetActive(false));
 
-        input.SwitchCurrentActionMap("Game");
+        InputController.Instance.input.SwitchCurrentActionMap("Game");
         GameManager.Instance.startTimer = true;
     }
 
@@ -141,6 +152,7 @@ public class UIManager_Game : MonoBehaviour
         gameStart.SetActive(false);
         result.SetActive(false);
         option.SetActive(false);
+        itemPopUp.SetActive(false);
 
         if (option.activeInHierarchy) 
         {
@@ -156,10 +168,25 @@ public class UIManager_Game : MonoBehaviour
 
     public void ToGame()
     {
-        input.SwitchCurrentActionMap("Game");
-        pausePanel.DOFade(0,duration)
-        .OnComplete(() => pause.SetActive(false));
-
+        gameOver.SetActive(false);
+        gameStart.SetActive(false);
+        result.SetActive(false);
+        option.SetActive(false);
+        
+        if (pausePanel.alpha > 0)
+        {
+            Debug.Log("ToGame(): pausePanel.alpha > 0");
+            pausePanel.DOFade(0,duration)
+            .OnComplete(() => pause.SetActive(false));
+        }
+        else if (itemPopUpPanel.alpha > 0)
+        {
+            Debug.Log("ToGame(): itenPanel.alpha > 0");
+            itemPopUpPanel.DOFade(0,duration)
+            .OnComplete(() => itemPopUp.SetActive(false));
+        }
+        
+        InputController.Instance.input.SwitchCurrentActionMap("Game");
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -184,7 +211,7 @@ public class UIManager_Game : MonoBehaviour
         gameStart.SetActive(false);
         pause.SetActive(false);
         option.SetActive(false);
-        input.SwitchCurrentActionMap("UI");
+        InputController.Instance.input.SwitchCurrentActionMap("UI");
 
         resultValue.text = $"Time: {hour.ToString("D2")} : {min.ToString("D2")} : {sec.ToString("F2")}\nEnegyCoreDUMMY: {/*GameManager.Instance.dropItemSize*/1+1}\nKill: Not supported.";
         result.SetActive(true);
@@ -197,7 +224,7 @@ public class UIManager_Game : MonoBehaviour
         pause.SetActive(false);
         option.SetActive(false);
         result.SetActive(false);
-        input.SwitchCurrentActionMap("UI");
+        InputController.Instance.input.SwitchCurrentActionMap("UI");
         GameManager.Instance.startTimer = false;
 
         gameOver.SetActive(true);
@@ -205,5 +232,30 @@ public class UIManager_Game : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         GameManager.Instance.startTimer = false;
+    }
+
+    public void OnItemPop(bool Up, Sprite item)
+    {
+        pause.SetActive(false);
+        option.SetActive(false);
+        result.SetActive(false);
+        gameOver.SetActive(false);
+        gameStart.SetActive(false);
+        itemPopUp.SetActive(true);
+        
+        Cursor.visible = Up ? true : false;
+        Cursor.lockState = Up ? CursorLockMode.None : CursorLockMode.Locked;
+
+        if (Up) 
+        {
+            itemFrame.sprite = item;
+            itemPopUpPanel.DOFade(1,duration)
+            .OnComplete(() => InputController.Instance.input.SwitchCurrentActionMap("UI"));
+        }
+        else 
+        {
+            itemPopUpPanel.DOFade(0,duration)
+            .OnComplete(() => InputController.Instance.input.SwitchCurrentActionMap("Game"));
+        }
     }
 }

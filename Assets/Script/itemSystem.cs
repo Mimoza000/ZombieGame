@@ -3,41 +3,24 @@ using DG.Tweening;
 
 public class itemSystem : MonoBehaviour
 {
-    [SerializeField] itemStatus status;
-    float duration = 10;
+    public itemStatus status;
+    [HideInInspector] public Sprite sprite;
+    float duration = 0.7f;
     Vector3 player;
-    bool xClear = false;
-    bool yClear = false;
-    bool zClear = false;
     void OnTriggerEnter(Collider collider)
     {
         if (collider.CompareTag("Player"))
         {
             player = collider.transform.position;
-            transform.DOMoveX(player.x,duration)
+
+            transform.DOMove(new Vector3(player.x,0.3f,player.z),duration)
             .SetEase(Ease.InOutSine)
             .SetLink(this.gameObject)
-            .OnComplete(() => xClear = true);
-
-            transform.DOMoveZ(player.z,duration)
-            .SetEase(Ease.InOutSine)
-            .SetLink(this.gameObject)
-            .OnComplete(() => zClear = true);
-
-            transform.DOMoveY(0.3f,duration)
-            .SetEase(Ease.InOutSine)
-            .SetLink(this.gameObject)
-            .OnComplete(() => yClear = true);
-        }
-    }
-
-    void Update()
-    {
-        if (xClear && yClear && zClear)
-        {
-            Debug.Log("All checks are CLEAR");
-            // Add to Inventory
-            // Destroy(this.gameObject);
+            .OnComplete(() => 
+            {
+                GameManager.Instance.itemList[status.id] += status.size;
+                Destroy(this.gameObject);
+            });
         }
     }
 }

@@ -1,9 +1,11 @@
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class chestboxController : MonoBehaviour
 {
     [SerializeField] float duration = 0.4f;
+    [SerializeField] UIManager_Game UIManager;
     [SerializeField] CanvasGroup excute;
     [SerializeField] GameObject ammoPrefab;
     [SerializeField] GameObject bandagePrefab;
@@ -11,7 +13,8 @@ public class chestboxController : MonoBehaviour
     [SerializeField] Transform chestboxTop;
     Animator animator;
     float openDuration = 2;
-    AnimatorStateInfo animationInfo;
+    bool canInit = true;
+    CanvasGroup panel;
     
     void Start()
     {
@@ -30,21 +33,35 @@ public class chestboxController : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            if (excute.alpha != 0) 
-            {
-                excute.DOFade(0,duration);
-            }
-            chestboxTop.DOLocalRotate(new Vector3(0,180,0),openDuration);
+            // if (excute.alpha != 0) 
+            // {
+            //     excute.DOFade(0,duration);
+            // }
+            chestboxTop.DOLocalRotate(new Vector3(0,180,0),openDuration)
+            .OnComplete(() => canInit = true);
+
+            panel.DOFade(1,duration)
+            .OnComplete(() => UIManager.OnItemPop(false,null));
         }
     }
 
     public void Open()
-    {  
+    {
+        excute.DOFade(0,duration);
         chestboxTop.DOLocalRotate(new Vector3(0,180,-80),openDuration)
         .OnComplete(() => 
         {
-            excute.DOFade(0,duration);
-            Instantiate(RandomPicker(),Vector3.up + gameObject.transform.position,Quaternion.identity);
+            
+            if (canInit) 
+            {
+                GameObject gameObject = RandomPicker();
+                itemSystem script = gameObject.GetComponent<itemSystem>();
+
+                Instantiate(gameObject,Vector3.up + transform.position,Quaternion.identity);
+                UIManager.OnItemPop(true,script.status.image);
+
+                canInit = false;
+            }
         });
     }
 

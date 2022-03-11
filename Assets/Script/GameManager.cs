@@ -1,21 +1,25 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     [HideInInspector] public static GameManager Instance;
     [HideInInspector] public int playerHP = 0;
     public int maxHP = 100;
-    [Header("Value")]
     [HideInInspector] public bool startTimer = false;
+    public int[] itemList = new int[3];
     
     void Awake()
     {
+        if (Instance != null) 
+        {
+            Destroy(this.gameObject);
+            return;
+        }
         Instance = this;
-        DontDestroyOnLoad(Instance);
+        DontDestroyOnLoad(gameObject);
     }
 
-    private void Start()
+    void Start()
     {
         playerHP = maxHP;
         Cursor.visible = false;

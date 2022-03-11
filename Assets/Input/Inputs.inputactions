@@ -278,15 +278,6 @@
             "id": "6d824a65-358e-42d6-9034-a0a3073c8db4",
             "actions": [
                 {
-                    "name": "BackToGame",
-                    "type": "Button",
-                    "id": "ae10b4c1-4832-4ece-ab38-25f4f50c9363",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Navigate",
                     "type": "PassThrough",
                     "id": "eb2f5f4f-75f4-4328-a54a-9e9bf9991d36",
@@ -378,17 +369,6 @@
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "6c62bb63-5d67-4c62-8a80-13fb543a4100",
-                    "path": "<Keyboard>/escape",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyboardMouse",
-                    "action": "BackToGame",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "Gamepad",
                     "id": "b2124a2c-219d-453d-a375-71a9c9e44561",

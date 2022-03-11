@@ -3,12 +3,24 @@ using UnityEngine.InputSystem;
 
 public class InputController : MonoBehaviour
 {
+    [HideInInspector] public static InputController Instance;
     [SerializeField] playerMove move;
     [SerializeField] playerLook look;
     [SerializeField] weaponFire gun;
     [SerializeField] weaponAim aim;
-    [SerializeField] PlayerInput input;
+    public PlayerInput input;
     [SerializeField] UIManager_Game UI;
+
+    void Awake()
+    {
+        if (Instance != null) 
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
 
     void Update()
     {
@@ -22,7 +34,6 @@ public class InputController : MonoBehaviour
     {
         input.actions["Reload"].started += OnReload;
         input.actions["Pause"].started += OnUI;
-        input.actions["BackToGame"].started += OnGame;
         input.actions["Sprint"].started += OnSprint;
         input.actions["Sprint"].canceled += OnSprint;
         input.actions["Aim"].started += OnAim;
@@ -54,12 +65,6 @@ public class InputController : MonoBehaviour
             var chestbox = gun.hitInfo_0.collider.GetComponent<chestboxController>();
             if (chestbox != null) chestbox.Open();
         }
-    }
-
-    void OnGame(InputAction.CallbackContext obj)
-    {
-        input.SwitchCurrentActionMap("Game");
-        UI.ToGame();
     }
 
     void OnUI(InputAction.CallbackContext obj)

@@ -300,15 +300,6 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
             ""id"": ""6d824a65-358e-42d6-9034-a0a3073c8db4"",
             ""actions"": [
                 {
-                    ""name"": ""BackToGame"",
-                    ""type"": ""Button"",
-                    ""id"": ""ae10b4c1-4832-4ece-ab38-25f4f50c9363"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Navigate"",
                     ""type"": ""PassThrough"",
                     ""id"": ""eb2f5f4f-75f4-4328-a54a-9e9bf9991d36"",
@@ -400,17 +391,6 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""6c62bb63-5d67-4c62-8a80-13fb543a4100"",
-                    ""path"": ""<Keyboard>/escape"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KeyboardMouse"",
-                    ""action"": ""BackToGame"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": ""Gamepad"",
                     ""id"": ""b2124a2c-219d-453d-a375-71a9c9e44561"",
@@ -866,7 +846,6 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
         m_Game_FireMode = m_Game.FindAction("FireMode", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
-        m_UI_BackToGame = m_UI.FindAction("BackToGame", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
         m_UI_Submit = m_UI.FindAction("Submit", throwIfNotFound: true);
         m_UI_Cancel = m_UI.FindAction("Cancel", throwIfNotFound: true);
@@ -1049,7 +1028,6 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
     // UI
     private readonly InputActionMap m_UI;
     private IUIActions m_UIActionsCallbackInterface;
-    private readonly InputAction m_UI_BackToGame;
     private readonly InputAction m_UI_Navigate;
     private readonly InputAction m_UI_Submit;
     private readonly InputAction m_UI_Cancel;
@@ -1064,7 +1042,6 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
     {
         private @Inputs m_Wrapper;
         public UIActions(@Inputs wrapper) { m_Wrapper = wrapper; }
-        public InputAction @BackToGame => m_Wrapper.m_UI_BackToGame;
         public InputAction @Navigate => m_Wrapper.m_UI_Navigate;
         public InputAction @Submit => m_Wrapper.m_UI_Submit;
         public InputAction @Cancel => m_Wrapper.m_UI_Cancel;
@@ -1084,9 +1061,6 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_UIActionsCallbackInterface != null)
             {
-                @BackToGame.started -= m_Wrapper.m_UIActionsCallbackInterface.OnBackToGame;
-                @BackToGame.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnBackToGame;
-                @BackToGame.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnBackToGame;
                 @Navigate.started -= m_Wrapper.m_UIActionsCallbackInterface.OnNavigate;
                 @Navigate.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnNavigate;
                 @Navigate.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnNavigate;
@@ -1121,9 +1095,6 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @BackToGame.started += instance.OnBackToGame;
-                @BackToGame.performed += instance.OnBackToGame;
-                @BackToGame.canceled += instance.OnBackToGame;
                 @Navigate.started += instance.OnNavigate;
                 @Navigate.performed += instance.OnNavigate;
                 @Navigate.canceled += instance.OnNavigate;
@@ -1183,7 +1154,6 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
     }
     public interface IUIActions
     {
-        void OnBackToGame(InputAction.CallbackContext context);
         void OnNavigate(InputAction.CallbackContext context);
         void OnSubmit(InputAction.CallbackContext context);
         void OnCancel(InputAction.CallbackContext context);

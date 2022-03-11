@@ -8,5 +8,5 @@ public class itemStatus : ScriptableObject
     public new string name;
     public int id;
     public Sprite image;
-    public int amountOfSize;
+    public int size;
 }
