@@ -7,7 +7,6 @@ public class itemStatus : ScriptableObject
 {
     public new string name;
     public int id;
-    public GameObject gameObject;
     public Sprite image;
-    public int effectSize;
+    public int amountOfSize;
 }

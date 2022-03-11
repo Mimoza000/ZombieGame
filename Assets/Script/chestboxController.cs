@@ -8,7 +8,7 @@ public class chestboxController : MonoBehaviour
     [SerializeField] GameObject ammoPrefab;
     [SerializeField] GameObject bandagePrefab;
     [SerializeField] GameObject enegyCorePrefab;
-    [SerializeField] GameObject chestboxTop;
+    [SerializeField] Transform chestboxTop;
     Animator animator;
     float openDuration = 2;
     AnimatorStateInfo animationInfo;
@@ -34,13 +34,13 @@ public class chestboxController : MonoBehaviour
             {
                 excute.DOFade(0,duration);
             }
-            chestboxTop.transform.DOLocalRotate(new Vector3(0,0,0),openDuration);
+            chestboxTop.DOLocalRotate(new Vector3(0,180,0),openDuration);
         }
     }
 
     public void Open()
     {  
-        chestboxTop.transform.DOLocalRotate(new Vector3(0,0,-80),openDuration)
+        chestboxTop.DOLocalRotate(new Vector3(0,180,-80),openDuration)
         .OnComplete(() => 
         {
             excute.DOFade(0,duration);
