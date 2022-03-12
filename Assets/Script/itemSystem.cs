@@ -15,11 +15,11 @@ public class itemSystem : MonoBehaviour
 
             transform.DOMove(new Vector3(player.x,0.3f,player.z),duration)
             .SetEase(Ease.InOutSine)
-            .SetLink(this.gameObject)
+            .SetLink(gameObject)
             .OnComplete(() => 
             {
                 GameManager.Instance.itemList[status.id] += status.size;
-                Destroy(this.gameObject);
+                Destroy(gameObject);
             });
         }
     }

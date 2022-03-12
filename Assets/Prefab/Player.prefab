@@ -298,7 +298,7 @@ PrefabInstance:
     - target: {fileID: 2846132566717242123, guid: f3e8f18e565e58c438d451f4153ba801, type: 3}
       propertyPath: clip
       value: 
-      objectReference: {fileID: 8300000, guid: d61d14fa1a329ac4091ac81f2c9ac7a7, type: 3}
+      objectReference: {fileID: 8300000, guid: 7cbcf26d36a53324492397d599a4d5ff, type: 3}
     - target: {fileID: 2846132566717242123, guid: f3e8f18e565e58c438d451f4153ba801, type: 3}
       propertyPath: fire
       value: 
@@ -309,7 +309,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2846132566717242123, guid: f3e8f18e565e58c438d451f4153ba801, type: 3}
       propertyPath: damage
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2846132566717242123, guid: f3e8f18e565e58c438d451f4153ba801, type: 3}
       propertyPath: maxAmmo
@@ -318,6 +318,10 @@ PrefabInstance:
     - target: {fileID: 2846132566717242123, guid: f3e8f18e565e58c438d451f4153ba801, type: 3}
       propertyPath: ammoText
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2846132566717242123, guid: f3e8f18e565e58c438d451f4153ba801, type: 3}
+      propertyPath: fireRate
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 2846132566717242123, guid: f3e8f18e565e58c438d451f4153ba801, type: 3}
       propertyPath: crosshair

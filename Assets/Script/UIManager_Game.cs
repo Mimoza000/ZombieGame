@@ -106,6 +106,9 @@ public class UIManager_Game : MonoBehaviour
 
     private void Update()
     {   
+        Debug.Log((int)itemPopUpPanel.alpha);
+
+
         playerHP_Bar.value = GameManager.Instance.playerHP;
         playerHP.text = $"{GameManager.Instance.playerHP.ToString()} / {GameManager.Instance.maxHP.ToString()}";
         Ammo.text = $"Ammo: {fire.ammo.ToString()}/{fire.maxAmmo.ToString()}";

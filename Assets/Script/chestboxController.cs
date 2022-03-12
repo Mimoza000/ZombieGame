@@ -37,11 +37,12 @@ public class chestboxController : MonoBehaviour
             // {
             //     excute.DOFade(0,duration);
             // }
-            chestboxTop.DOLocalRotate(new Vector3(0,180,0),openDuration)
-            .OnComplete(() => canInit = true);
-
-            panel.DOFade(1,duration)
-            .OnComplete(() => UIManager.OnItemPop(false,null));
+            if (!canInit) 
+            {
+                chestboxTop.DOLocalRotate(new Vector3(0,180,0),openDuration)
+                .OnComplete(() => canInit = true);
+                UIManager.OnItemPop(false,null);
+            }
         }
     }
 
@@ -54,10 +55,10 @@ public class chestboxController : MonoBehaviour
             
             if (canInit) 
             {
-                GameObject gameObject = RandomPicker();
-                itemSystem script = gameObject.GetComponent<itemSystem>();
+                GameObject gameobject = RandomPicker();
+                itemSystem script = gameobject.GetComponent<itemSystem>();
 
-                Instantiate(gameObject,Vector3.up + transform.position,Quaternion.identity);
+                Instantiate(gameobject,Vector3.up + transform.position,Quaternion.identity);
                 UIManager.OnItemPop(true,script.status.image);
 
                 canInit = false;
