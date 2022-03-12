@@ -4,7 +4,7 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine.SceneManagement;
 using Cysharp.Threading.Tasks;
-using UnityEngine.InputSystem;
+using System.Collections;
 
 public class UIManager_Game : MonoBehaviour
 {
@@ -29,8 +29,10 @@ public class UIManager_Game : MonoBehaviour
     [SerializeField] GameObject result;
     [SerializeField] GameObject itemPopUp;
     [SerializeField] GameObject inventory;
+    [SerializeField] GameObject empty;
     [SerializeField] TextMeshProUGUI countDown;
     [SerializeField] TextMeshProUGUI resultValue;
+    [SerializeField] TextMeshProUGUI loading;
     [SerializeField] weaponFire fire;
     
     CanvasGroup gameStartPanel;
@@ -40,6 +42,7 @@ public class UIManager_Game : MonoBehaviour
     CanvasGroup gameOverPanel;
     CanvasGroup itemPopUpPanel;
     CanvasGroup inventoryPanel;
+    CanvasGroup emptyPanel;
     float time = 0;
     float sec = 0;
     int min = 0;
@@ -51,6 +54,7 @@ public class UIManager_Game : MonoBehaviour
         // gameOver.SetActive(false);
         // itemPopUp.SetActive(false);
         // inventoy.SetActive(false);
+        // empty.SetActive(false);
     void Awake()
     {
         // Initalize
@@ -62,6 +66,7 @@ public class UIManager_Game : MonoBehaviour
         optionPanel = option.GetComponent<CanvasGroup>();
         itemPopUpPanel = itemPopUp.GetComponent<CanvasGroup>();
         inventoryPanel = inventory.GetComponent<CanvasGroup>();
+        emptyPanel = empty.GetComponent<CanvasGroup>();
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -73,6 +78,7 @@ public class UIManager_Game : MonoBehaviour
         gameStartPanel.alpha = 0;
         itemPopUpPanel.alpha = 0;
         inventoryPanel.alpha = 0;
+        emptyPanel.alpha = 0;
         crosshair.color = new Color(1,1,1,1);
         hitCrosshair.color = new Color32(255,0,0,0);
 
@@ -82,16 +88,17 @@ public class UIManager_Game : MonoBehaviour
         gameOver.SetActive(false);
         itemPopUp.SetActive(false);
         inventory.SetActive(false);
+        empty.SetActive(false);
 
         gameStartPanel.alpha = 1;
         gameStart.SetActive(true);
-
-        InputController.Instance.input.SwitchCurrentActionMap("UI");
-        playerHP_Bar.maxValue = GameManager.Instance.maxHP;
     }
 
     async void Start()
     {
+        InputController.Instance.input.SwitchCurrentActionMap("UI");
+        playerHP_Bar.maxValue = GameManager.Instance.maxHP;
+
         await UniTask.Delay(1000);
         countDown.text = "3";
 
@@ -114,9 +121,6 @@ public class UIManager_Game : MonoBehaviour
 
     private void Update()
     {   
-        Debug.Log((int)itemPopUpPanel.alpha);
-
-
         playerHP_Bar.value = GameManager.Instance.playerHP;
         playerHP.text = $"{GameManager.Instance.playerHP.ToString()} / {GameManager.Instance.maxHP.ToString()}";
         Ammo.text = $"Ammo: {fire.ammo.ToString()}/{fire.maxAmmo.ToString()}";
@@ -153,7 +157,16 @@ public class UIManager_Game : MonoBehaviour
 
     public void LoadLobby()
     {
-        SceneManager.LoadScene(0);
+        pause.SetActive(false);
+        option.SetActive(false);
+        result.SetActive(false);
+        gameStart.SetActive(false);
+        gameOver.SetActive(false);
+        itemPopUp.SetActive(false);
+        inventory.SetActive(false);
+        empty.SetActive(true);
+        emptyPanel.DOFade(1,duration)
+        .OnComplete(() => StartCoroutine("LoadScene"));
     }
 
     public void ToPause()
@@ -233,6 +246,8 @@ public class UIManager_Game : MonoBehaviour
 
         resultValue.text = $"Time: {hour.ToString("D2")} : {min.ToString("D2")} : {sec.ToString("F2")}";
         result.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         resultPanel.DOFade(1,duration);
     }
 
@@ -293,6 +308,17 @@ public class UIManager_Game : MonoBehaviour
         {
             itemPopUpPanel.DOFade(0,duration)
             .OnComplete(() => InputController.Instance.input.SwitchCurrentActionMap("Game"));
+        }
+    }
+
+    IEnumerator LoadScene()
+    {
+        var load = SceneManager.LoadSceneAsync("Lobby");
+
+        while (!load.isDone)
+        {
+            loading.text = $"Now Loading ({load.progress * 100} / 100)";
+            yield return null;
         }
     }
 }

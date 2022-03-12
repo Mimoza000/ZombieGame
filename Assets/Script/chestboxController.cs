@@ -33,10 +33,7 @@ public class chestboxController : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            // if (excute.alpha != 0) 
-            // {
-            //     excute.DOFade(0,duration);
-            // }
+            excute.DOFade(0,duration);
             if (!canInit) 
             {
                 chestboxTop.DOLocalRotate(new Vector3(0,180,0),openDuration)

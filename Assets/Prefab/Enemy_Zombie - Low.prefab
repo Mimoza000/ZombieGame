@@ -380,7 +380,7 @@ MonoBehaviour:
   animator: {fileID: 1478284984996592834}
   HP_Bar: {fileID: 4481187424436643871}
   HP: {fileID: 1550664322642766959}
-  enegyCore: {fileID: 7521790069443414638, guid: 8382d55bc9fca5c4bac31a6580d580d3, type: 3}
+  enegyCore: {fileID: 8811897234077968385, guid: 222909dc6f095854f9ff7d54b279e16c, type: 3}
   distance: 0
   activeLimiter: 0
   addtiveMaxRandom: 1

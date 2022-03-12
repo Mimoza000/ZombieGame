@@ -19,7 +19,6 @@ public class InputController : MonoBehaviour
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     void Update()

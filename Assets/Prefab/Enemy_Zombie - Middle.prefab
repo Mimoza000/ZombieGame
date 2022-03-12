@@ -10500,7 +10500,13 @@ MonoBehaviour:
   animator: {fileID: 9050467038744740439}
   HP_Bar: {fileID: 6280898279655773834}
   HP: {fileID: 8979979131319915258}
-  enegyCore: {fileID: 7521790069443414638, guid: 8382d55bc9fca5c4bac31a6580d580d3, type: 3}
+  enegyCore: {fileID: 8811897234077968385, guid: 222909dc6f095854f9ff7d54b279e16c, type: 3}
+  distance: -1
+  activeLimiter: 0
+  addtiveMaxRandom: 1
+  angularSpeed: 360
+  enemyHP: 0
+  generatorRate: 0.5
 --- !u!1 &7673446977093802351
 GameObject:
   m_ObjectHideFlags: 0
