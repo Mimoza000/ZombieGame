@@ -42,6 +42,7 @@ public class InputController : MonoBehaviour
         input.actions["Fire"].started += OnFire;
         input.actions["Fire"].canceled += OnFireCanceled;
         input.actions["Excute"].started += OnExcute;
+        input.actions["Inventory"].started += OnInventory;
     }
 
     void OnDisable()
@@ -56,6 +57,12 @@ public class InputController : MonoBehaviour
         input.actions["Fire"].started -= OnFire;
         input.actions["Fire"].canceled -= OnFireCanceled;
         input.actions["Excute"].started -= OnExcute;
+        input.actions["Inventory"].started -= OnInventory;
+    }
+
+    void OnInventory(InputAction.CallbackContext obj)
+    {
+        UI.OnInventory();
     }
 
     void OnExcute(InputAction.CallbackContext obj)
@@ -69,7 +76,6 @@ public class InputController : MonoBehaviour
 
     void OnUI(InputAction.CallbackContext obj)
     {
-        input.SwitchCurrentActionMap("UI");
         UI.ToPause();
     }
 

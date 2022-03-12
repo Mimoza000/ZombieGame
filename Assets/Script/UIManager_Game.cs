@@ -17,8 +17,10 @@ public class UIManager_Game : MonoBehaviour
     [SerializeField] TextMeshProUGUI playerHP;
     [SerializeField] TextMeshProUGUI Ammo;
     [SerializeField] TextMeshProUGUI Reload;
-    [SerializeField] TextMeshProUGUI enegyCoreCount;
     [SerializeField] TextMeshProUGUI timer;
+    [SerializeField] TextMeshProUGUI inventoryAmmoValue;
+    [SerializeField] TextMeshProUGUI inventoryBandageValue;
+    [SerializeField] TextMeshProUGUI inventoryEnegyCoreValue;
     [SerializeField] float duration = 1;
     [SerializeField] GameObject pause;
     [SerializeField] GameObject option;
@@ -26,6 +28,7 @@ public class UIManager_Game : MonoBehaviour
     [SerializeField] GameObject gameOver;
     [SerializeField] GameObject result;
     [SerializeField] GameObject itemPopUp;
+    [SerializeField] GameObject inventory;
     [SerializeField] TextMeshProUGUI countDown;
     [SerializeField] TextMeshProUGUI resultValue;
     [SerializeField] weaponFire fire;
@@ -36,6 +39,7 @@ public class UIManager_Game : MonoBehaviour
     CanvasGroup resultPanel;
     CanvasGroup gameOverPanel;
     CanvasGroup itemPopUpPanel;
+    CanvasGroup inventoryPanel;
     float time = 0;
     float sec = 0;
     int min = 0;
@@ -46,6 +50,7 @@ public class UIManager_Game : MonoBehaviour
         // gameStart.SetActvive(false);
         // gameOver.SetActive(false);
         // itemPopUp.SetActive(false);
+        // inventoy.SetActive(false);
     void Awake()
     {
         // Initalize
@@ -56,6 +61,7 @@ public class UIManager_Game : MonoBehaviour
         resultPanel = result.GetComponent<CanvasGroup>();
         optionPanel = option.GetComponent<CanvasGroup>();
         itemPopUpPanel = itemPopUp.GetComponent<CanvasGroup>();
+        inventoryPanel = inventory.GetComponent<CanvasGroup>();
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -66,6 +72,7 @@ public class UIManager_Game : MonoBehaviour
         gameOverPanel.alpha = 0;
         gameStartPanel.alpha = 0;
         itemPopUpPanel.alpha = 0;
+        inventoryPanel.alpha = 0;
         crosshair.color = new Color(1,1,1,1);
         hitCrosshair.color = new Color32(255,0,0,0);
 
@@ -74,6 +81,7 @@ public class UIManager_Game : MonoBehaviour
         result.SetActive(false);
         gameOver.SetActive(false);
         itemPopUp.SetActive(false);
+        inventory.SetActive(false);
 
         gameStartPanel.alpha = 1;
         gameStart.SetActive(true);
@@ -113,7 +121,6 @@ public class UIManager_Game : MonoBehaviour
         playerHP.text = $"{GameManager.Instance.playerHP.ToString()} / {GameManager.Instance.maxHP.ToString()}";
         Ammo.text = $"Ammo: {fire.ammo.ToString()}/{fire.maxAmmo.ToString()}";
         Reload.text = $"Reload: {fire.nowReloadTime}";
-        // enegyCoreCount.text = $"EnegyCore: {GameManager.Instance.dropItemSize.ToString()}";
 
         // Timer
         if (GameManager.Instance.startTimer) 
@@ -156,6 +163,7 @@ public class UIManager_Game : MonoBehaviour
         result.SetActive(false);
         option.SetActive(false);
         itemPopUp.SetActive(false);
+        inventory.SetActive(false);
 
         if (option.activeInHierarchy) 
         {
@@ -165,6 +173,7 @@ public class UIManager_Game : MonoBehaviour
         pause.SetActive(true);
         pausePanel.DOFade(1,duration);
 
+        InputController.Instance.input.SwitchCurrentActionMap("UI");
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
@@ -187,6 +196,12 @@ public class UIManager_Game : MonoBehaviour
             Debug.Log("ToGame(): itenPanel.alpha > 0");
             itemPopUpPanel.DOFade(0,duration)
             .OnComplete(() => itemPopUp.SetActive(false));
+        }
+        else if (inventoryPanel.alpha >0 )
+        {
+            Debug.Log("ToGame(): inventoryPanel.alpha > 0");
+            inventoryPanel.DOFade(0,duration)
+            .OnComplete(() => inventory.SetActive(false));
         }
         
         InputController.Instance.input.SwitchCurrentActionMap("Game");
@@ -216,7 +231,7 @@ public class UIManager_Game : MonoBehaviour
         option.SetActive(false);
         InputController.Instance.input.SwitchCurrentActionMap("UI");
 
-        resultValue.text = $"Time: {hour.ToString("D2")} : {min.ToString("D2")} : {sec.ToString("F2")}\nEnegyCoreDUMMY: {/*GameManager.Instance.dropItemSize*/1+1}\nKill: Not supported.";
+        resultValue.text = $"Time: {hour.ToString("D2")} : {min.ToString("D2")} : {sec.ToString("F2")}";
         result.SetActive(true);
         resultPanel.DOFade(1,duration);
     }
@@ -235,6 +250,25 @@ public class UIManager_Game : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         GameManager.Instance.startTimer = false;
+    }
+
+    public void OnInventory()
+    {
+        pause.SetActive(false);
+        option.SetActive(false);
+        result.SetActive(false);
+        gameStart.SetActive(false);
+        gameOver.SetActive(false);
+        itemPopUp.SetActive(false);
+        inventoryAmmoValue.text = "x" + GameManager.Instance.itemList[0].ToString();
+        inventoryBandageValue.text = "x" + GameManager.Instance.itemList[1].ToString();
+        inventoryEnegyCoreValue.text = "x" + GameManager.Instance.itemList[2].ToString();
+
+        inventory.SetActive(true);
+        InputController.Instance.input.SwitchCurrentActionMap("UI");
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        inventoryPanel.DOFade(1,duration);
     }
 
     public void OnItemPop(bool Up, Sprite item)

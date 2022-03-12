@@ -273,6 +273,17 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""dcb80215-c6c6-439f-af0c-2452354bc0b1"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""9a402ee9-cada-4a25-8bc6-eff994b88a3c"",
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
