@@ -3,27 +3,7 @@ guid: 4ebb23e2e16197e4aa582875c5759f6d
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: TexturesCom_Grass0164_1_seamless_S
-    second: {fileID: 2800000, guid: 39046bb3d395a56409d297d3a2d45a00, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: TexturesCom_MarbleTiles0171_1_seamless_S
-    second: {fileID: 2800000, guid: 9013a3f5671d72f458b4c23321d1c88a, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: TexturesCom_Wall_BrickSideways_4x2_512_albedo
-    second: {fileID: 2800000, guid: 18762906adc42e34589beb149f39e5c0, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: TexturesCom_Wall_BrickSideways_4x2_512_normal
-    second: {fileID: 2800000, guid: f51855de319036d449fafec2b5c224e6, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

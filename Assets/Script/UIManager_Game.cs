@@ -11,7 +11,7 @@ public class UIManager_Game : MonoBehaviour
     [Header("References")]
     
     [SerializeField] Image crosshair;
-    [SerializeField] Image hitCrosshair;
+    public Image hitCrosshair;
     [SerializeField] Image itemFrame;
     [SerializeField] Slider playerHP_Bar;
     [SerializeField] TextMeshProUGUI playerHP;
@@ -124,7 +124,7 @@ public class UIManager_Game : MonoBehaviour
         playerHP_Bar.value = GameManager.Instance.playerHP;
         playerHP.text = $"{GameManager.Instance.playerHP.ToString()} / {GameManager.Instance.maxHP.ToString()}";
         Ammo.text = $"Ammo: {fire.ammo.ToString()}/{fire.maxAmmo.ToString()}";
-        Reload.text = $"Reload: {fire.nowReloadTime}";
+        Reload.text = "Reload: " + fire.nowReloadTime.ToString("F1");
 
         // Timer
         if (GameManager.Instance.startTimer) 
@@ -200,17 +200,15 @@ public class UIManager_Game : MonoBehaviour
         
         if (pausePanel.alpha > 0)
         {
-            Debug.Log("ToGame(): pausePanel.alpha > 0");
             pausePanel.DOFade(0,duration)
             .OnComplete(() => pause.SetActive(false));
         }
         else if (itemPopUpPanel.alpha > 0)
         {
-            Debug.Log("ToGame(): itenPanel.alpha > 0");
             itemPopUpPanel.DOFade(0,duration)
             .OnComplete(() => itemPopUp.SetActive(false));
         }
-        else if (inventoryPanel.alpha >0 )
+        else if (inventoryPanel.alpha > 0)
         {
             Debug.Log("ToGame(): inventoryPanel.alpha > 0");
             inventoryPanel.DOFade(0,duration)
@@ -317,7 +315,7 @@ public class UIManager_Game : MonoBehaviour
 
         while (!load.isDone)
         {
-            loading.text = $"Now Loading ({load.progress * 100} / 100)";
+            loading.text = $"Now Loading... {load.progress * 100}%";
             yield return null;
         }
     }

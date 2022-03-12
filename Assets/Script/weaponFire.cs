@@ -6,7 +6,6 @@ public class weaponFire : MonoBehaviour
     [SerializeField] Transform muzzle;
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] UIManager_Game crosshair;
-    float reloadingTime = 3.3f;
     public float nowReloadTime;
     bool nowReloading;
     [SerializeField] Ray ray_0;
@@ -22,27 +21,29 @@ public class weaponFire : MonoBehaviour
     [SerializeField] float fireRecoil = 0;
     public bool enableSemiAuto = true;
     [SerializeField] int damage = 1;
-    [SerializeField] AudioClip clip;
-    [SerializeField] AudioSource fire;
+    [SerializeField] AudioClip fireSE;
+    [SerializeField] AudioClip reloadSE;
+    [SerializeField] AudioSource muzzleAudio;
+    [SerializeField] AudioSource magazineAudio;
     enemySystem enemy;
     float duration = 0.5f;
-    bool canShoot;
+    bool canShoot = false;
     float nowShootTime = 0;
-    /*LineRenderer line;*/
-
     void Start()
     {
         ammo = maxAmmo;
         nowReloadTime = 0;
-        // CancellationTokenの発行
-        // cts = new CancellationTokenSource();
     }
 
     public void Fire(bool trigger)
     {    
         if (enableSemiAuto)    
         {
-            if (!trigger) return;
+            if (!trigger) 
+            {
+                canShoot = false;
+                return;
+            }
             Shot();
         }
         else
@@ -50,11 +51,11 @@ public class weaponFire : MonoBehaviour
             if (!trigger) 
             {
                 canShoot = false;
+                if (crosshair.hitCrosshair.color.a > 0) crosshair.HitCrossHairFade(false,false,duration);
                 nowShootTime = 0;
                 return;
             }
             Shot();
-            canShoot = true;
         }
     }
 
@@ -75,9 +76,13 @@ public class weaponFire : MonoBehaviour
                 nowShootTime = 0;
             }
         }
-        if (!hitInfo_1.collider.CompareTag("Enemy") && !enableSemiAuto)
-        {   
-            crosshair.HitCrossHairFade(false,false,duration);
+        if (hitInfo_1.collider != null && canShoot)
+        {
+            if (!hitInfo_1.collider.CompareTag("Enemy"))
+            {
+                crosshair.HitCrossHairFade(false,false,duration);
+                enemy = null;
+            }
         }
     }
 
@@ -108,9 +113,10 @@ public class weaponFire : MonoBehaviour
         if (nowReloading) return;
 
         // Shoot
+        canShoot = true;
         ammo--;
         muzzleFlash.Play();
-        fire.PlayOneShot(clip);
+        muzzleAudio.PlayOneShot(fireSE);
         
         // Check ray and get enemySystem
         if (hitInfo_1.collider.CompareTag("Enemy")) enemy = hitInfo_1.collider.GetComponentInParent<enemySystem>();
@@ -123,8 +129,11 @@ public class weaponFire : MonoBehaviour
 
     public async void ReloadStart()
     {
+        if (ammo >= maxAmmo) return;
         nowReloading = true;
-        await UniTask.Delay((int)reloadingTime * 1000);
+        canShoot = false;
+        magazineAudio.PlayOneShot(reloadSE);
+        await UniTask.Delay((int)(reloadSE.length * 1000));
         ReloadFinish();
     }
 
@@ -132,10 +141,5 @@ public class weaponFire : MonoBehaviour
     {
         ammo = maxAmmo;
         nowReloading = false;
-    }
-
-    void Timer()
-    {
-        reloadingTime += Time.deltaTime;
     }
 }

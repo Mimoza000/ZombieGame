@@ -98,8 +98,8 @@ public class UIManager_Start : MonoBehaviour
         .OnComplete(() => start.SetActive(false));
 
         gun.SetActive(true);
-        gunPanel.DOFade(1,duration)
-        .OnComplete(() => cam2.m_Priority = 11);
+        cam2.m_Priority = 11;
+        gunPanel.DOFade(1,1);
     }
 
     IEnumerator LoadScene()
@@ -108,7 +108,7 @@ public class UIManager_Start : MonoBehaviour
 
         while (!load.isDone)
         {
-            loading.text = $"Now Loading ({load.progress * 100} / 100)";
+            loading.text = $"Now Loading... {load.progress * 100}%";
             yield return null;
         }
     }

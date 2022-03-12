@@ -47,7 +47,7 @@ public class InputController : MonoBehaviour
     void OnDisable()
     {
         input.actions["Reload"].started -= OnReload;
-        input.actions["Pause"].started += OnUI;
+        input.actions["Pause"].started -= OnUI;
         input.actions["Sprint"].started -= OnSprint;
         input.actions["Sprint"].canceled -= OnSprint;
         input.actions["Aim"].started += OnAim;

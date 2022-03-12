@@ -1,11 +1,12 @@
 using UnityEngine;
+using DG.Tweening;
 
 public class ObjectRotation : MonoBehaviour
 {
-    [SerializeField] float multiplier = 1;
-    
-    void Update()
+    void Start()
     {
-        transform.rotation *= Quaternion.Euler(0, 1 * multiplier, 0);
+        transform.DORotate(Vector3.up,1)
+        .SetLoops(-1,LoopType.Restart)
+        .SetLink(gameObject);
     }
 }

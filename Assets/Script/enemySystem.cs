@@ -46,7 +46,7 @@ public class enemySystem : MonoBehaviour
         if (!GameManager.Instance.startTimer) return;
         // Canvas
         HP_Bar.value = enemyHP;
-        HP_Bar.transform.forward = Camera.main.transform.forward;
+        HP_Bar.transform.forward = -Camera.main.transform.forward;
         HP.transform.forward = Camera.main.transform.forward;
         HP.text = enemyHP.ToString();
 
