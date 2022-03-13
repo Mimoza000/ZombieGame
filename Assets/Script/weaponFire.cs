@@ -139,7 +139,6 @@ public class weaponFire : MonoBehaviour
 
     void ReloadFinish()
     {
-        GameManager.Instance.itemList[0] += -magazineSize +ammo;
         ammo = AmmoToMagazine();
         nowReloading = false;
     }
@@ -147,13 +146,18 @@ public class weaponFire : MonoBehaviour
     int AmmoToMagazine()
     {
         int currentAmmo;
-        if (GameManager.Instance.itemList[0] <= 0) 
+        if (GameManager.Instance.itemList[0] <= magazineSize)
         {
-            currentAmmo = 0;
+            
+            currentAmmo = GameManager.Instance.itemList[0];
             GameManager.Instance.itemList[0] = 0;
         }
-        else if (GameManager.Instance.itemList[0] < magazineSize) currentAmmo = GameManager.Instance.itemList[0] % magazineSize;
-        else currentAmmo = magazineSize;
+        else
+        {
+            GameManager.Instance.itemList[0] -= magazineSize;
+            currentAmmo = magazineSize;
+        }
+        
         return currentAmmo;
     }
 }

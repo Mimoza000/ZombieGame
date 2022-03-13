@@ -3,7 +3,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [HideInInspector] public static GameManager Instance;
-    [SerializeField] UIManager_Game UI;
     [HideInInspector] public int playerHP = 0;
     [HideInInspector] public int maxHP = 100;
     [HideInInspector] public bool startTimer = false;

@@ -127,7 +127,7 @@ public class UIManager_Game : MonoBehaviour
 
         playerHP_Bar.value = GameManager.Instance.playerHP;
         playerHP.text = $"{GameManager.Instance.playerHP.ToString()} / {GameManager.Instance.maxHP.ToString()}";
-        Ammo.text = $"Ammo: {fire.ammo.ToString()}/{fire.magazineSize.ToString()}";
+        Ammo.text = $"Ammo: {fire.ammo.ToString()}/{GameManager.Instance.itemList[0]}";
         Reload.text = "Reload: " + fire.nowReloadTime.ToString("F1");
         inventoryAmmoValue.text = "x" + GameManager.Instance.itemList[0].ToString();
         inventoryBandageValue.text = "x" + GameManager.Instance.itemList[1].ToString();
