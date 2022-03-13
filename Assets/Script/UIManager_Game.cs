@@ -33,6 +33,7 @@ public class UIManager_Game : MonoBehaviour
     [SerializeField] TextMeshProUGUI countDown;
     [SerializeField] TextMeshProUGUI resultValue;
     [SerializeField] TextMeshProUGUI loading;
+    [SerializeField] TextMeshProUGUI itemPopUpName;
     [SerializeField] weaponFire fire;
     
     CanvasGroup gameStartPanel;
@@ -67,6 +68,7 @@ public class UIManager_Game : MonoBehaviour
         itemPopUpPanel = itemPopUp.GetComponent<CanvasGroup>();
         inventoryPanel = inventory.GetComponent<CanvasGroup>();
         emptyPanel = empty.GetComponent<CanvasGroup>();
+        // itemWarningPanel = itemWarning.GetComponent<CanvasGroup>();
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -121,10 +123,15 @@ public class UIManager_Game : MonoBehaviour
 
     private void Update()
     {   
+        
+
         playerHP_Bar.value = GameManager.Instance.playerHP;
         playerHP.text = $"{GameManager.Instance.playerHP.ToString()} / {GameManager.Instance.maxHP.ToString()}";
-        Ammo.text = $"Ammo: {fire.ammo.ToString()}/{fire.maxAmmo.ToString()}";
+        Ammo.text = $"Ammo: {fire.ammo.ToString()}/{fire.magazineSize.ToString()}";
         Reload.text = "Reload: " + fire.nowReloadTime.ToString("F1");
+        inventoryAmmoValue.text = "x" + GameManager.Instance.itemList[0].ToString();
+        inventoryBandageValue.text = "x" + GameManager.Instance.itemList[1].ToString();
+        inventoryEnegyCoreValue.text = "x" + GameManager.Instance.itemList[2].ToString();
 
         // Timer
         if (GameManager.Instance.startTimer) 
@@ -157,32 +164,16 @@ public class UIManager_Game : MonoBehaviour
 
     public void LoadLobby()
     {
-        pause.SetActive(false);
-        option.SetActive(false);
-        result.SetActive(false);
-        gameStart.SetActive(false);
-        gameOver.SetActive(false);
-        itemPopUp.SetActive(false);
-        inventory.SetActive(false);
+        Checker(empty);
         empty.SetActive(true);
         emptyPanel.DOFade(1,duration)
         .OnComplete(() => StartCoroutine("LoadScene"));
     }
 
-    public void ToPause()
+    public void OnPause()
     {
-        gameOver.SetActive(false);
-        gameStart.SetActive(false);
-        result.SetActive(false);
-        option.SetActive(false);
-        itemPopUp.SetActive(false);
-        inventory.SetActive(false);
-
-        if (option.activeInHierarchy) 
-        {
-            optionPanel.DOFade(0,duration)
-            .OnComplete(() => option.SetActive(false));
-        }
+        Checker(pause);
+        Debug.Log("OnPause");
         pause.SetActive(true);
         pausePanel.DOFade(1,duration);
 
@@ -191,44 +182,21 @@ public class UIManager_Game : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
     }
 
-    public void ToGame()
+    public void OnGame()
     {
-        gameOver.SetActive(false);
-        gameStart.SetActive(false);
-        result.SetActive(false);
-        option.SetActive(false);
-        
-        if (pausePanel.alpha > 0)
-        {
-            pausePanel.DOFade(0,duration)
-            .OnComplete(() => pause.SetActive(false));
-        }
-        else if (itemPopUpPanel.alpha > 0)
-        {
-            itemPopUpPanel.DOFade(0,duration)
-            .OnComplete(() => itemPopUp.SetActive(false));
-        }
-        else if (inventoryPanel.alpha > 0)
-        {
-            Debug.Log("ToGame(): inventoryPanel.alpha > 0");
-            inventoryPanel.DOFade(0,duration)
-            .OnComplete(() => inventory.SetActive(false));
-        }
-        
+        Checker();
+        Debug.Log("OnGame");
         InputController.Instance.input.SwitchCurrentActionMap("Game");
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    public void ToOptions()
+    public void OnOptions()
     {
-        pausePanel.DOFade(0,duration)
-        .OnComplete(() => 
-        {
-            pause.SetActive(false);
-            option.SetActive(true);
-            optionPanel.DOFade(1,duration);
-        });
+        Checker(option);
+        Debug.Log("OnOptions");
+        option.SetActive(true);
+        optionPanel.DOFade(1,duration);
 
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -236,25 +204,19 @@ public class UIManager_Game : MonoBehaviour
 
     public void OnResult()
     {
-        gameOver.SetActive(false);
-        gameStart.SetActive(false);
-        pause.SetActive(false);
-        option.SetActive(false);
-        InputController.Instance.input.SwitchCurrentActionMap("UI");
-
+        Checker(result);
         resultValue.text = $"Time: {hour.ToString("D2")} : {min.ToString("D2")} : {sec.ToString("F2")}";
-        result.SetActive(true);
+        InputController.Instance.input.SwitchCurrentActionMap("UI");
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+
+        result.SetActive(true);
         resultPanel.DOFade(1,duration);
     }
 
     void OnGameOver()
     {
-        gameStart.SetActive(false);
-        pause.SetActive(false);
-        option.SetActive(false);
-        result.SetActive(false);
+        Checker(gameOver);
         InputController.Instance.input.SwitchCurrentActionMap("UI");
         GameManager.Instance.startTimer = false;
 
@@ -262,50 +224,141 @@ public class UIManager_Game : MonoBehaviour
         gameOverPanel.DOFade(1,duration);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        GameManager.Instance.startTimer = false;
     }
 
     public void OnInventory()
     {
-        pause.SetActive(false);
-        option.SetActive(false);
-        result.SetActive(false);
-        gameStart.SetActive(false);
-        gameOver.SetActive(false);
-        itemPopUp.SetActive(false);
-        inventoryAmmoValue.text = "x" + GameManager.Instance.itemList[0].ToString();
-        inventoryBandageValue.text = "x" + GameManager.Instance.itemList[1].ToString();
-        inventoryEnegyCoreValue.text = "x" + GameManager.Instance.itemList[2].ToString();
+        Checker(inventory);
 
-        inventory.SetActive(true);
         InputController.Instance.input.SwitchCurrentActionMap("UI");
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+
+        inventory.SetActive(true);
         inventoryPanel.DOFade(1,duration);
     }
 
-    public void OnItemPop(bool Up, Sprite item)
+    public void OnItemPop(bool Up, itemStatus item)
     {
-        pause.SetActive(false);
-        option.SetActive(false);
-        result.SetActive(false);
-        gameOver.SetActive(false);
-        gameStart.SetActive(false);
-        itemPopUp.SetActive(true);
+        Checker(itemPopUp);
         
         Cursor.visible = Up ? true : false;
         Cursor.lockState = Up ? CursorLockMode.None : CursorLockMode.Locked;
 
         if (Up) 
         {
-            itemFrame.sprite = item;
+            itemFrame.sprite = item.image;
+            itemPopUp.SetActive(true);
+            itemPopUpName.text = item.name;
+
             itemPopUpPanel.DOFade(1,duration)
             .OnComplete(() => InputController.Instance.input.SwitchCurrentActionMap("UI"));
         }
         else 
         {
             itemPopUpPanel.DOFade(0,duration)
-            .OnComplete(() => InputController.Instance.input.SwitchCurrentActionMap("Game"));
+            .OnComplete(() => 
+            {
+                itemPopUp.SetActive(false);
+                InputController.Instance.input.SwitchCurrentActionMap("Game");
+            });
+        }
+    }
+
+    void Checker(GameObject without = null)
+    {
+        if (pause != without)
+        {
+            if (pause.activeInHierarchy || pausePanel.alpha > 0)
+            {
+                Debug.Log("pause disabled");
+                pausePanel.DOFade(0,duration)
+                .OnComplete(() => pause.SetActive(false));
+            }
+        }
+        if (option != without)
+        {
+            if (option.activeInHierarchy || optionPanel.alpha > 0)
+            {
+                optionPanel.DOFade(0,duration)
+                .OnComplete(() => 
+                {
+                    option.SetActive(false);
+                    Debug.Log("option disabled");
+                });
+            }
+        }
+        if (result != without)
+        {
+            if (result.activeInHierarchy || resultPanel.alpha > 0)
+            {
+                resultPanel.DOFade(0,duration)
+                .OnComplete(() => 
+                {
+                    result.SetActive(false);
+                    Debug.Log("result disabled");
+                });
+            }
+        }
+        if (gameStart != without)
+        {
+            if (gameStart.activeInHierarchy || gameStartPanel.alpha > 0)
+            {
+                gameStartPanel.DOFade(0,duration)
+                .OnComplete(() => 
+                {
+                    gameStart.SetActive(false);
+                    Debug.Log("gameStart disabled");
+                });
+            }
+        }
+        if (itemPopUp != without)
+        {
+            if (itemPopUp.activeInHierarchy || itemPopUpPanel.alpha > 0)
+            {
+                itemPopUpPanel.DOFade(0,duration)
+                .OnComplete(() => 
+                {
+                    itemPopUp.SetActive(false);
+                    Debug.Log("itemPopUp disabled");
+                });
+            }
+        }
+        if (gameOver != without)
+        {
+            if (option.activeInHierarchy || gameOverPanel.alpha > 0)
+            {
+                gameOverPanel.DOFade(0,duration)
+                .OnComplete(() => 
+                {
+                    gameOver.SetActive(false);
+                    Debug.Log("itemPopUp disabled");
+                });
+            }
+        }
+        if (inventory != without)
+        {
+            if (inventory.activeInHierarchy || inventoryPanel.alpha > 0)
+            {
+                inventoryPanel.DOFade(0,duration)
+                .OnComplete(() => 
+                {
+                    inventory.SetActive(false);
+                    Debug.Log("inventory disabled");
+                });
+            }
+        }
+        if (empty != without)
+        {
+            if (empty.activeInHierarchy || emptyPanel.alpha > 0)
+            {
+                emptyPanel.DOFade(0,duration)
+                .OnComplete(() => 
+                {
+                    empty.SetActive(false);
+                    Debug.Log("empty disabled");
+                });
+            }
         }
     }
 
@@ -315,7 +368,7 @@ public class UIManager_Game : MonoBehaviour
 
         while (!load.isDone)
         {
-            loading.text = $"Now Loading... {load.progress * 100}%";
+            loading.text = $"Now Loading... {(int)(load.progress* 100)}%";
             yield return null;
         }
     }

@@ -6,16 +6,15 @@ public class weaponFire : MonoBehaviour
     [SerializeField] Transform muzzle;
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] UIManager_Game crosshair;
-    public float nowReloadTime;
+    [HideInInspector] public float nowReloadTime;
     bool nowReloading;
     [SerializeField] Ray ray_0;
     [SerializeField] Ray ray_1;
     public RaycastHit hitInfo_0;
     public RaycastHit hitInfo_1;
     [Header("Value")]
-    [HideInInspector] public int ammo = 0;
-    public int maxAmmo = 20;
-    
+    public int magazineSize = 30;
+    [HideInInspector] public int ammo;
     [Tooltip("100%")]
     [SerializeField] float fireRate;
     [SerializeField] float fireRecoil = 0;
@@ -31,7 +30,7 @@ public class weaponFire : MonoBehaviour
     float nowShootTime = 0;
     void Start()
     {
-        ammo = maxAmmo;
+        ammo = AmmoToMagazine();
         nowReloadTime = 0;
     }
 
@@ -111,6 +110,7 @@ public class weaponFire : MonoBehaviour
         // Reload Check
         if (ammo <= 0 && !nowReloading) ReloadStart();
         if (nowReloading) return;
+        else if (GameManager.Instance.itemList[0] < 0 && ammo <= 0) return;
 
         // Shoot
         canShoot = true;
@@ -129,7 +129,7 @@ public class weaponFire : MonoBehaviour
 
     public async void ReloadStart()
     {
-        if (ammo >= maxAmmo) return;
+        if (ammo >= magazineSize || GameManager.Instance.itemList[0] < 0) return;
         nowReloading = true;
         canShoot = false;
         magazineAudio.PlayOneShot(reloadSE);
@@ -139,7 +139,21 @@ public class weaponFire : MonoBehaviour
 
     void ReloadFinish()
     {
-        ammo = maxAmmo;
+        GameManager.Instance.itemList[0] += -magazineSize +ammo;
+        ammo = AmmoToMagazine();
         nowReloading = false;
+    }
+
+    int AmmoToMagazine()
+    {
+        int currentAmmo;
+        if (GameManager.Instance.itemList[0] <= 0) 
+        {
+            currentAmmo = 0;
+            GameManager.Instance.itemList[0] = 0;
+        }
+        else if (GameManager.Instance.itemList[0] < magazineSize) currentAmmo = GameManager.Instance.itemList[0] % magazineSize;
+        else currentAmmo = magazineSize;
+        return currentAmmo;
     }
 }

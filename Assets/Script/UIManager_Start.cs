@@ -105,10 +105,9 @@ public class UIManager_Start : MonoBehaviour
     IEnumerator LoadScene()
     {
         var load = SceneManager.LoadSceneAsync("Game");
-
         while (!load.isDone)
         {
-            loading.text = $"Now Loading... {load.progress * 100}%";
+            loading.text = $"Now Loading... {(int)(load.progress* 100)}%";
             yield return null;
         }
     }

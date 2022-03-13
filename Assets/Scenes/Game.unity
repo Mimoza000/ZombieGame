@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: ec219181c92728c418ac47f32d8f825b, type: 2}
---- !u!82 &12883882 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 43933015, guid: 838dc43df4fc5b64698f80d89f4483b9, type: 3}
-  m_PrefabInstance: {fileID: 931056709}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &50774625
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -361,7 +356,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2027786549}
         m_TargetAssemblyTypeName: UIManager_Game, Assembly-CSharp
-        m_MethodName: ToGame
+        m_MethodName: OnGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1151,8 +1146,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2027786549}
-        m_TargetAssemblyTypeName: UI_Manager_Game, Assembly-CSharp
-        m_MethodName: ToGame
+        m_TargetAssemblyTypeName: UIManager_Game, Assembly-CSharp
+        m_MethodName: OnGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3009,7 +3004,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 309981464}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -3908,6 +3903,7 @@ GameObject:
   - component: {fileID: 371692266}
   - component: {fileID: 371692268}
   - component: {fileID: 371692267}
+  - component: {fileID: 371692269}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -3972,6 +3968,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 371692265}
   m_CullTransparentMesh: 1
+--- !u!114 &371692269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371692265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 371692267}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1308887316}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OnHeal
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &372108557
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5257,7 +5309,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You've got...
+  m_text: ItemName
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9477,32 +9529,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2846132566190004800, guid: 838dc43df4fc5b64698f80d89f4483b9, type: 3}
-      propertyPath: fireSE
-      value: 
-      objectReference: {fileID: 8300000, guid: 8223dcb543732df48a2a0b6a65164e85, type: 3}
-    - target: {fileID: 2846132566190004800, guid: 838dc43df4fc5b64698f80d89f4483b9, type: 3}
-      propertyPath: fireRate
-      value: 0.085
-      objectReference: {fileID: 0}
-    - target: {fileID: 2846132566190004800, guid: 838dc43df4fc5b64698f80d89f4483b9, type: 3}
-      propertyPath: reloadSE
-      value: 
-      objectReference: {fileID: 8300000, guid: 558ea720b5b545045a17689c2a142482, type: 3}
-    - target: {fileID: 2846132566190004800, guid: 838dc43df4fc5b64698f80d89f4483b9, type: 3}
       propertyPath: crosshair
       value: 
       objectReference: {fileID: 2027786549}
     - target: {fileID: 2846132566190004800, guid: 838dc43df4fc5b64698f80d89f4483b9, type: 3}
-      propertyPath: muzzleAudio
-      value: 
-      objectReference: {fileID: 12883882}
-    - target: {fileID: 2846132566190004800, guid: 838dc43df4fc5b64698f80d89f4483b9, type: 3}
-      propertyPath: magazineAudio
-      value: 
-      objectReference: {fileID: 1914331286}
-    - target: {fileID: 2846132566190004800, guid: 838dc43df4fc5b64698f80d89f4483b9, type: 3}
       propertyPath: enableSemiAuto
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5004277188194464240, guid: 838dc43df4fc5b64698f80d89f4483b9, type: 3}
       propertyPath: UI
@@ -10660,7 +10692,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2027786549}
         m_TargetAssemblyTypeName: UIManager_Game, Assembly-CSharp
-        m_MethodName: ToGame
+        m_MethodName: OnGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12930,10 +12962,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57ccb249a8c1f6e41977a43aa10cb96f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UI: {fileID: 0}
   playerHP: 0
   maxHP: 100
   startTimer: 0
-  itemList: 000000000000000000000000
+  itemList: 000000000600000000000000
+  bandageValue: 150
 --- !u!4 &1308887317
 Transform:
   m_ObjectHideFlags: 0
@@ -15374,8 +15408,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2027786549}
-        m_TargetAssemblyTypeName: UI_Manager_Game, Assembly-CSharp
-        m_MethodName: ToOptions
+        m_TargetAssemblyTypeName: UIManager_Game, Assembly-CSharp
+        m_MethodName: OnOptions
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17077,107 +17111,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6712842188690744177, guid: 382dcbcc5a436b544ba3347d8cf8a495, type: 3}
   m_PrefabInstance: {fileID: 1907149924}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1914331282 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7646589767405213725, guid: 838dc43df4fc5b64698f80d89f4483b9, type: 3}
-  m_PrefabInstance: {fileID: 931056709}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &1914331286
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1914331282}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &1915724248 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5993113158928259897, guid: e4610eefcea47dc4992c4e660a9e86de, type: 3}
@@ -17862,6 +17795,7 @@ MonoBehaviour:
   countDown: {fileID: 485723776}
   resultValue: {fileID: 1081946472}
   loading: {fileID: 2124231939}
+  itemPopUpName: {fileID: 500940780}
   fire: {fileID: 2103701152}
 --- !u!4 &2027786550
 Transform:
@@ -17961,8 +17895,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2027786549}
-        m_TargetAssemblyTypeName: UI_Manager_Game, Assembly-CSharp
-        m_MethodName: ToPause
+        m_TargetAssemblyTypeName: UIManager_Game, Assembly-CSharp
+        m_MethodName: OnGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

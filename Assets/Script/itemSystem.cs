@@ -19,6 +19,7 @@ public class itemSystem : MonoBehaviour
             .OnComplete(() => 
             {
                 GameManager.Instance.itemList[status.id] += status.size;
+                if (status.id == 1) GameManager.Instance.bandageValue += status.value;
                 Destroy(gameObject);
             });
         }

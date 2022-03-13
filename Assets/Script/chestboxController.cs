@@ -56,7 +56,7 @@ public class chestboxController : MonoBehaviour
                 itemSystem script = gameobject.GetComponent<itemSystem>();
 
                 Instantiate(gameobject,Vector3.up + transform.position,Quaternion.identity);
-                UIManager.OnItemPop(true,script.status.image);
+                UIManager.OnItemPop(true,script.status);
 
                 canInit = false;
             }

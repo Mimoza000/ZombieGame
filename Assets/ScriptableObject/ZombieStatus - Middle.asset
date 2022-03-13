@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e172749c0c636334a9aa82e2d5f094a9, type: 3}
   m_Name: ZombieStatus - Middle
   m_EditorClassIdentifier: 
-  enemyName: 
+  enemyName: Zombie
   attack: 10
   maxHP: 200
-  walkSpeed: 4
-  runSpeed: 8
+  walkSpeed: 2
+  runSpeed: 4
   startWalkDistance: 200
   stopDistance: 4

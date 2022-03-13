@@ -50,8 +50,8 @@ public class InputController : MonoBehaviour
         input.actions["Pause"].started -= OnUI;
         input.actions["Sprint"].started -= OnSprint;
         input.actions["Sprint"].canceled -= OnSprint;
-        input.actions["Aim"].started += OnAim;
-        input.actions["Aim"].canceled += OnAimCanceled;
+        input.actions["Aim"].started -= OnAim;
+        input.actions["Aim"].canceled -= OnAimCanceled;
         input.actions["FireMode"].started -= OnFireMode;
         input.actions["Fire"].started -= OnFire;
         input.actions["Fire"].canceled -= OnFireCanceled;
@@ -75,7 +75,7 @@ public class InputController : MonoBehaviour
 
     void OnUI(InputAction.CallbackContext obj)
     {
-        UI.ToPause();
+        UI.OnPause();
     }
 
     void OnFireMode(InputAction.CallbackContext obj)

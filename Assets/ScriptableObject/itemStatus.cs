@@ -9,4 +9,5 @@ public class itemStatus : ScriptableObject
     public int id;
     public Sprite image;
     public int size;
+    public int value;
 }

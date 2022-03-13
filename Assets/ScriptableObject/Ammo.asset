@@ -15,4 +15,5 @@ MonoBehaviour:
   name: Ammo
   id: 0
   image: {fileID: 21300000, guid: d70fad554b869a541b14f2ab68544f7d, type: 3}
-  size: 1
+  size: 30
+  value: 0
